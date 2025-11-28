@@ -5,6 +5,11 @@ This guide is designed for beginners. You don't need complex configurations to d
 ## Option 1: GitHub Pages
 
 1.  **Build your project**
+    
+    First, ensure you have the correct Node.js version installed.
+    *   **Download & Install**: Go to [https://nodejs.org/en/download](https://nodejs.org/en/download) and install Node.js manually.
+    *   Better not to use the system's default Node.js as it might be outdated.
+
     Open your terminal in the project folder and run:
     
     ```bash

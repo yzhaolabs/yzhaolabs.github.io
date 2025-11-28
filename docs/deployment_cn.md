@@ -5,6 +5,11 @@
 ## 方案一：GitHub Pages
 
 1.  **构建你的项目**
+
+    首先，请确保你安装了正确的 Node.js 版本。
+    *   **下载与安装**：请前往 [https://nodejs.org/en/download](https://nodejs.org/en/download) 手动下载并安装。
+    *   最好不要使用系统自带的 Node.js 版本，以免出现兼容性问题。
+
     打开终端，进入项目文件夹，运行以下命令：
 
     ```bash

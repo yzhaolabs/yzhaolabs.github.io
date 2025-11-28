@@ -25,7 +25,9 @@ PRISM 专为**研究人员、开发者和学者**量身打造，只为让你能�
 
 ### 前置要求
 
-*   Node.js 15 或更高版本
+*   Node.js 22 或更高版本
+    *   **重要提示**：请务必前往 [https://nodejs.org/en/download](https://nodejs.org/en/download) 手动下载并安装 Node.js。
+    *   最好不要使用系统自带的包管理器安装的版本，因为它们通常较旧且可能导致兼容性问题。
 *   npm, pnpm, 或 yarn
 
 ### 安装步骤
