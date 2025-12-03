@@ -42,7 +42,7 @@ export default function SelectedPublications({ publications, title = 'Selected P
                         <p className="text-sm text-neutral-600 dark:text-neutral-500 mb-1">
                             {pub.authors.map((author, idx) => (
                                 <span key={idx}>
-                                    <span className={author.isHighlighted ? 'font-semibold text-accent' : ''}>
+                                    <span className={`${author.isHighlighted ? 'font-semibold text-accent' : ''} ${author.isCoAuthor ? `underline underline-offset-4 ${author.isHighlighted ? 'decoration-accent' : 'decoration-neutral-400'}` : ''}`}>
                                         {author.name}
                                     </span>
                                     {author.isCorresponding && (
