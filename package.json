@@ -31,9 +31,13 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.3.3",
+    "lightningcss": "^1",
     "svg2ico": "^1.0.35",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "optionalDependencies": {
+    "lightningcss-linux-x64-gnu": "^1"
   },
   "engines": {
     "node": ">=22.0.0"
