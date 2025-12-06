@@ -36,6 +36,9 @@
     "tailwindcss": "^4",
     "typescript": "^5"
   },
+  "optionalDependencies": {
+    "lightningcss-linux-x64-gnu": "^1"
+  },
   "engines": {
     "node": ">=22.0.0"
   }
