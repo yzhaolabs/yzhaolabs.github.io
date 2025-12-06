@@ -62,11 +62,10 @@ For template users, GitHub disables workflows by default.
 To enable deployment:
 
 1. Go to **Settings > Pages**, and under **Build and deployment > Source**, choose **GitHub Actions**.
-2. Go to **GitHub > Actions**
-3. Select **"Deploy PRISM to GitHub Pages"**
-4. Click **"Enable workflow"**
-5. Run manually using **“Run workflow”**
-6. (Optional) To enable automatic deployment on push:  
+2. Go to **Actions** Tab, and select **"Deploy PRISM to GitHub Pages"**.
+3. Click **"Enable workflow"**.
+4. Run manually using **Run workflow**.
+5. (Optional) To enable automatic deployment on push:  
    Edit `.github/workflows/deploy.yml` and uncomment:
 
    ```yaml
