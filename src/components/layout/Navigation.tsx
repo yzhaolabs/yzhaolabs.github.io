@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -37,6 +37,13 @@ export default function Navigation({
   const [activeHash, setActiveHash] = useState('');
   const [hoveredHref, setHoveredHref] = useState<string | null>(null);
   const messages = useMessages();
+  const navContainerRef = useRef<HTMLDivElement>(null);
+  const [indicatorStyle, setIndicatorStyle] = useState<{
+    left: number;
+    width: number;
+    top: number;
+    height: number;
+  } | null>(null);
 
   const effectiveItems = useMemo(() => {
     if (!i18n.enabled) return items;
@@ -58,19 +65,31 @@ export default function Navigation({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const visibleSections = useRef(new Set<string>());
+
   useEffect(() => {
     if (enableOnePageMode) {
       setActiveHash(window.location.hash);
       const handleHashChange = () => setActiveHash(window.location.hash);
       window.addEventListener('hashchange', handleHashChange);
 
+      visibleSections.current.clear();
+
       const observerCallback = (entries: IntersectionObserverEntry[]) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const id = entry.target.id;
-            setActiveHash(id === 'about' ? '' : `#${id}`);
+            visibleSections.current.add(entry.target.id);
+          } else {
+            visibleSections.current.delete(entry.target.id);
           }
         });
+
+        const firstVisible = effectiveItems.find(
+          (item) => item.type === 'page' && visibleSections.current.has(item.target)
+        );
+        if (firstVisible) {
+          setActiveHash(firstVisible.target === 'about' ? '' : `#${firstVisible.target}`);
+        }
       };
 
       const observerOptions = {
@@ -109,6 +128,36 @@ export default function Navigation({
   const activeHref = activeItem ? getDesktopItemHref(activeItem) : null;
   const indicatorHref = hoveredHref ?? activeHref;
 
+  const measureIndicator = useCallback(() => {
+    const container = navContainerRef.current;
+    if (!container || !indicatorHref) {
+      setIndicatorStyle(null);
+      return;
+    }
+    const el = container.querySelector<HTMLElement>(
+      `[data-nav-href="${CSS.escape(indicatorHref)}"]`
+    );
+    if (!el) {
+      setIndicatorStyle(null);
+      return;
+    }
+    setIndicatorStyle({
+      left: el.offsetLeft,
+      width: el.offsetWidth,
+      top: el.offsetTop,
+      height: el.offsetHeight,
+    });
+  }, [indicatorHref]);
+
+  useEffect(() => {
+    measureIndicator();
+  }, [measureIndicator]);
+
+  useEffect(() => {
+    window.addEventListener('resize', measureIndicator);
+    return () => window.removeEventListener('resize', measureIndicator);
+  }, [measureIndicator]);
+
   return (
     <Disclosure as="nav" className="fixed top-0 left-0 right-0 z-50">
       {({ open }) => (
@@ -142,18 +191,41 @@ export default function Navigation({
                 <div className="hidden lg:block">
                   <div className="ml-10 flex items-center space-x-3">
                     <div
-                      className="flex items-baseline space-x-1"
+                      ref={navContainerRef}
+                      className="relative flex items-baseline space-x-1"
                       onMouseLeave={() => setHoveredHref(null)}
                     >
+                      {indicatorStyle && (
+                        <motion.div
+                          className={cn(
+                            'absolute rounded-lg pointer-events-none',
+                            hoveredHref && hoveredHref !== activeHref
+                              ? 'bg-accent/[0.07]'
+                              : 'bg-accent/10'
+                          )}
+                          initial={false}
+                          animate={{
+                            left: indicatorStyle.left,
+                            width: indicatorStyle.width,
+                            top: indicatorStyle.top,
+                            height: indicatorStyle.height,
+                          }}
+                          transition={{
+                            type: 'spring',
+                            stiffness: 400,
+                            damping: 28,
+                          }}
+                        />
+                      )}
                       {effectiveItems.map((item) => {
                         const isActive = isDesktopItemActive(item);
                         const href = getDesktopItemHref(item);
-                        const showIndicator = indicatorHref === href;
 
                         return (
                           <Link
                             key={item.target}
                             href={href}
+                            data-nav-href={href}
                             prefetch={true}
                             onClick={() => enableOnePageMode && setActiveHash(`#${item.target}`)}
                             onMouseEnter={() => setHoveredHref(href)}
@@ -166,26 +238,7 @@ export default function Navigation({
                                   : 'text-neutral-600'
                             )}
                           >
-                            <span className="relative z-10">{item.title}</span>
-                            {showIndicator && (
-                              <motion.div
-                                layoutId="navIndicator"
-                                className={cn(
-                                  'absolute inset-0 rounded-lg',
-                                  isActive && hoveredHref === null
-                                    ? 'bg-accent/10'
-                                    : isActive
-                                      ? 'bg-accent/10'
-                                      : 'bg-accent/[0.07]'
-                                )}
-                                initial={false}
-                                transition={{
-                                  type: 'spring',
-                                  stiffness: 400,
-                                  damping: 28,
-                                }}
-                              />
-                            )}
+                            {item.title}
                           </Link>
                         );
                       })}
