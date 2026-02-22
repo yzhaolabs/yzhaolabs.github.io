@@ -1,5 +1,6 @@
 import { Publication, PublicationType, ResearchArea } from '@/types/publication';
 import { getConfig } from './config';
+import { getRuntimeI18nConfig } from './i18n/config';
 
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const bibtexParse = require('bibtex-parse-js');
@@ -34,16 +35,15 @@ const monthMapping: Record<string, number> = {
   dec: 12, december: 12,
 };
 
-export function parseBibTeX(bibtexContent: string): Publication[] {
-  const config = getConfig();
-  const authorName = config.author.name;
+export function parseBibTeX(bibtexContent: string, locale?: string): Publication[] {
+  const highlightNames = getHighlightNames(locale);
   const entries = bibtexParse.toJSON(bibtexContent);
 
   return entries.map((entry: { entryType: string; citationKey: string; entryTags: Record<string, string> }, index: number) => {
     const tags = entry.entryTags;
 
     // Parse authors
-    const authors = parseAuthors(tags.author || '', authorName);
+    const authors = parseAuthors(tags.author || '', highlightNames);
 
     // Parse year and month
     const year = parseInt(tags.year) || new Date().getFullYear();
@@ -118,8 +118,73 @@ export function parseBibTeX(bibtexContent: string): Publication[] {
   });
 }
 
-function parseAuthors(authorsStr: string, highlightName?: string): Array<{ name: string; isHighlighted?: boolean; isCorresponding?: boolean; isCoAuthor?: boolean }> {
+function getHighlightNames(locale?: string): string[] {
+  const names = new Set<string>();
+  const baseConfig = getConfig();
+  const runtimeI18n = getRuntimeI18nConfig(baseConfig.i18n);
+
+  const addName = (name?: string) => {
+    const cleaned = cleanBibTeXString(name).trim();
+    if (cleaned) {
+      names.add(cleaned);
+    }
+  };
+
+  addName(baseConfig.author.name);
+
+  if (runtimeI18n.enabled) {
+    runtimeI18n.locales.forEach((localeCode) => {
+      const localizedConfig = getConfig(localeCode);
+      addName(localizedConfig.author.name);
+    });
+  }
+
+  if (locale) {
+    const currentLocaleConfig = getConfig(locale);
+    addName(currentLocaleConfig.author.name);
+  }
+
+  return Array.from(names);
+}
+
+function normalizePersonNameForMatch(name: string): string {
+  return name.toLowerCase().replace(/[\s.,'’`"()\-_/]/g, '');
+}
+
+function buildNameVariants(name: string): Set<string> {
+  const variants = new Set<string>();
+  const cleaned = cleanBibTeXString(name).toLowerCase().trim();
+
+  if (!cleaned) {
+    return variants;
+  }
+
+  variants.add(cleaned);
+
+  const parts = cleaned.split(/\s+/).filter(Boolean);
+  if (parts.length === 2) {
+    variants.add(`${parts[1]} ${parts[0]}`);
+  }
+
+  return variants;
+}
+
+function parseAuthors(authorsStr: string, highlightNames: string[]): Array<{ name: string; isHighlighted?: boolean; isCorresponding?: boolean; isCoAuthor?: boolean }> {
   if (!authorsStr) return [];
+
+  const highlightTextCandidates = new Set<string>();
+  const highlightNormalizedCandidates = new Set<string>();
+
+  highlightNames.forEach((name) => {
+    const variants = buildNameVariants(name);
+    variants.forEach((variant) => {
+      highlightTextCandidates.add(variant);
+      highlightNormalizedCandidates.add(normalizePersonNameForMatch(variant));
+    });
+  });
+
+  const highlightTextList = Array.from(highlightTextCandidates);
+  const highlightNormalizedList = Array.from(highlightNormalizedCandidates);
 
   // Split by "and" and clean up
   return authorsStr
@@ -143,26 +208,17 @@ function parseAuthors(authorsStr: string, highlightName?: string): Array<{ name:
         name = `${parts[1]} ${parts[0]}`;
       }
 
-      // Check if this is the site owner (to highlight)
-      let isHighlighted = false;
-      if (highlightName) {
-        const lowerName = name.toLowerCase();
-        const lowerHighlight = highlightName.toLowerCase();
-        isHighlighted = lowerName.includes(lowerHighlight);
+      name = cleanBibTeXString(name);
 
-        // Also check for reversed order (Last First) if not found
-        if (!isHighlighted && lowerHighlight.includes(' ')) {
-          const parts = lowerHighlight.split(' ');
-          // Handle simple First Last case
-          if (parts.length === 2) {
-            const reversed = `${parts[1]} ${parts[0]}`;
-            isHighlighted = lowerName.includes(reversed);
-          }
-        }
-      }
+      // Check if this is the site owner (to highlight)
+      const lowerName = name.toLowerCase();
+      const normalizedName = normalizePersonNameForMatch(lowerName);
+      const isHighlighted =
+        highlightTextList.some((candidate) => lowerName.includes(candidate)) ||
+        highlightNormalizedList.some((candidate) => normalizedName.includes(candidate));
 
       return {
-        name: cleanBibTeXString(name),
+        name,
         isHighlighted,
         isCorresponding,
         isCoAuthor,

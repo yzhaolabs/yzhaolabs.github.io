@@ -99,6 +99,17 @@ PRISM 支持以下几种页面类型：
 *   `card`: 卡片列表布局，适合展示 **项目 (Projects)** 或 **获奖经历 (Awards)**。
 *   `publication`: 完整的论文列表页，自带搜索和筛选器。
 
+### 5. 多语言支持（`content_<locale>/`）
+
+PRISM 现已支持多语言：
+
+*   默认语言内容放在 `content/`
+*   其他语言内容放在 `content_<locale>/`（例如：`content_zh/`、`content_en/`）。
+*   各语言目录保持同名文件。例如：`content/cv.md`（默认）、`content_zh/cv.md`
+*   若某个语言文件缺失，PRISM 会自动回退到默认 `content/` 中的同名文件。
+
+在 `content/config.toml` 中配置多语言行为：
+
 ## 📦 部署上线
 
 PRISM 针对静态部署进行了深度优化，你可以轻松将其托管在任何支持静态网站的平台上。

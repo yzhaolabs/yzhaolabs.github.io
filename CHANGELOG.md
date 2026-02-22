@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v1.3.0 on Feb 22, 2026
+- Added support for i18n. Set `enabled = true` in config.toml to enable this feature.
+
 ## v1.2.1 on Feb 19, 2026
 - Updated the navigation bar implementation to make it more responsive, dynamic, and natural.
 - The demo site is updated as well.

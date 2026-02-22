@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Publication } from '@/types/publication';
+import { useMessages } from '@/lib/i18n/useMessages';
 
 interface SelectedPublicationsProps {
     publications: Publication[];
@@ -10,7 +11,10 @@ interface SelectedPublicationsProps {
     enableOnePageMode?: boolean;
 }
 
-export default function SelectedPublications({ publications, title = 'Selected Publications', enableOnePageMode = false }: SelectedPublicationsProps) {
+export default function SelectedPublications({ publications, title, enableOnePageMode = false }: SelectedPublicationsProps) {
+    const messages = useMessages();
+    const resolvedTitle = title || messages.home.selectedPublications;
+
     return (
         <motion.section
             initial={{ opacity: 0, y: 20 }}
@@ -18,13 +22,13 @@ export default function SelectedPublications({ publications, title = 'Selected P
             transition={{ duration: 0.6, delay: 0.4 }}
         >
             <div className="flex items-center justify-between mb-4">
-                <h2 className="text-2xl font-serif font-bold text-primary">{title}</h2>
+                <h2 className="text-2xl font-serif font-bold text-primary">{resolvedTitle}</h2>
                 <Link
                     href={enableOnePageMode ? "/#publications" : "/publications"}
                     prefetch={true}
                     className="text-accent hover:text-accent-dark text-sm font-medium transition-all duration-200 rounded hover:bg-accent/10 hover:shadow-sm"
                 >
-                    View All →
+                    {messages.home.viewAll} →
                 </Link>
             </div>
             <div className="space-y-4">

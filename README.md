@@ -89,6 +89,18 @@ Supported page types:
 *   `card`: Renders a list of cards (Great for Projects, Awards).
 *   `publication`: Renders the full publications list with filters.
 
+### 5. I18N Support (`content_<locale>/`)
+PRISM now supports i18n, i.e., multi-language.
+
+*   Default language lives in `content/`.
+*   Additional languages live in `content_<locale>/` (for example: `content_zh/`, `content_en/`).
+*   Keep the same filenames across directories. Example:
+    *   `content/cv.md` (default)
+    *   `content_zh/cv.md`
+*   If a localized file is missing, PRISM automatically falls back to the default `content/` version.
+
+Configure language behavior in `content/config.toml`:
+
 ## 📦 Deployment
 
 PRISM is optimized for static deployment.
