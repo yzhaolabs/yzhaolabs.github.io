@@ -144,7 +144,7 @@ const zh: LocaleMessages = {
   },
   footer: {
     lastUpdated: '最近更新',
-    builtWithPrism: '基于 PRISM 构建',
+    builtWithPrism: '由 PRISM 构建',
   },
 };
 

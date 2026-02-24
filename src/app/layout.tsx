@@ -130,38 +130,15 @@ export default function RootLayout({
     <html lang={runtimeI18n.defaultLocale} className="scroll-smooth" suppressHydrationWarning>
       <head>
         <link rel="icon" href={config.site.favicon} type="image/svg+xml" />
-        <link rel="dns-prefetch" href="https://google-fonts.jialeliu.com" />
-        <link rel="preconnect" href="https://google-fonts.jialeliu.com" crossOrigin="" />
+        <link rel="dns-prefetch" href="https://jialeliu.com" />
+        <link rel="preconnect" href="https://jialeliu.com" crossOrigin="" />
         <link
           rel="preload"
-          as="style"
-          href="https://google-fonts.jialeliu.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"
+          as="font"
+          type="font/woff2"
+          href="https://jialeliu.com/fonts/georgiab.woff2"
+          crossOrigin=""
         />
-        <link
-          rel="stylesheet"
-          id="gfonts-css"
-          href="https://google-fonts.jialeliu.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"
-          media="print"
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(){
-                var l = document.getElementById('gfonts-css');
-                if (!l) return;
-                if (l.media !== 'all') {
-                  l.addEventListener('load', function(){ try { l.media = 'all'; } catch(e){} });
-                }
-              })();
-            `,
-          }}
-        />
-        <noscript>
-          <link
-            rel="stylesheet"
-            href="https://google-fonts.jialeliu.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap"
-          />
-        </noscript>
         <script
           dangerouslySetInnerHTML={{
             __html: `

@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v1.3.1 on Feb 24, 2026
+- Fixed SSR/client mismatch from font stylesheet toggling. Updated font settings to be deterministic.
+
 ## v1.3.0 on Feb 22, 2026
 - Added support for i18n. Set `enabled = true` in config.toml to enable this feature.
 - Fixed some cases where the navigation bar indicator not working correctly.
