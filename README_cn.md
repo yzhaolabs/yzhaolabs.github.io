@@ -96,7 +96,7 @@ enable_likes = true # 是否开启点赞功能
 PRISM 支持以下几种页面类型：
 
 *   `text`: 纯文本渲染（Markdown），非常适合用来放 **个人简历 (CV)** 或 **详细介绍 (Bio)**。
-*   `card`: 卡片列表布局，适合展示 **项目 (Projects)** 或 **获奖经历 (Awards)**。
+*   `card`: 卡片列表布局，适合展示 **项目 (Projects)** 或 **获奖经历 (Awards)**。卡片条目的 `content` 字段支持 Markdown。
 *   `publication`: 完整的论文列表页，自带搜索和筛选器。
 
 ### 5. 多语言支持（`content_<locale>/`）

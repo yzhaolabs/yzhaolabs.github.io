@@ -86,7 +86,7 @@ To add a new page (e.g., "Projects"), create a TOML file in `content/` (e.g., `c
 
 Supported page types:
 *   `text`: Renders Markdown content (Great for CVs, Bio).
-*   `card`: Renders a list of cards (Great for Projects, Awards).
+*   `card`: Renders a list of cards (Great for Projects, Awards). Content of each card item supports Markdown.
 *   `publication`: Renders the full publications list with filters.
 
 ### 5. I18N Support (`content_<locale>/`)

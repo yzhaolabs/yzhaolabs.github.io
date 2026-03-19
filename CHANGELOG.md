@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v1.3.2 on Mar 19, 2026
+- Added Markdown rendering for card items.
+
 ## v1.3.1 on Feb 24, 2026
 - Fixed SSR/client mismatch from font stylesheet toggling. Updated font settings to be deterministic.
 
