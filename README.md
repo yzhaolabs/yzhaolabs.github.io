@@ -1,141 +1,115 @@
 <div align="center">
-  <img src="./logo.png" alt="PRISM Logo" height="100"/>
+  <a href="./README_cn.md">
+    <img src="https://img.shields.io/badge/CN-中文-blue?style=for-the-badge&labelColor=gray" alt="中文" />
+  </a>
 </div>
 
-# PRISM
+<br />
 
-**English** · [中文](README_cn.md) · [Demo](https://prism-demo.pages.dev)  · [Changelog](CHANGELOG.md)
+# Joey Zhang — Personal Website
 
-**If you like this project, please give it a star ⭐️**
+<p align="center">
+  <strong>🎯 Quant Researcher · Portfolio & Research Site</strong>
+  <br />
+  Next.js 15 · Tailwind CSS v4 · Framer Motion · TypeScript
+  <br />
+  Static Export · Blazing Fast
+</p>
 
-PRISM stands for **P**ortfolio & **R**esearch **I**nterface **S**ite **M**aker. It is a modern, configurable, and high-performance personal website template built with Next.js, Tailwind CSS, and TypeScript. It is designed for researchers, developers, and academics to showcase their work, publications, and portfolio with ease.
+<p align="center">
+  <img src="https://img.shields.io/badge/Next.js-15-black?logo=next.js" alt="Next.js 15" />
+  <img src="https://img.shields.io/badge/Tailwind-v4-06B6D4?logo=tailwindcss" alt="Tailwind v4" />
+  <img src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript" alt="TypeScript" />
+</p>
 
-Feel free to customize your own version of PRISM with coding agents.
-
-![PRISM Preview](screenshot.png)
+---
 
 ## ✨ Features
 
-*   **📄 Configuration-Driven**: Manage your entire site's content using simple `TOML`, `Markdown`, and `BibTeX` files in the `content/` directory. No code changes required for content updates!
-*   **📚 BibTeX Support**: Directly render your publications from a `.bib` file. Includes search, filtering (Year, Type), and automatic citation generation.
-*   **🎨 Modern Design**: Clean, responsive UI with a beautiful serif/sans-serif typography pairing, smooth animations (Framer Motion), and Dark Mode support.
-*   **⚡️ High Performance**: Built on Next.js 20 with Turbopack. Static export ensures blazing fast load times and easy deployment.
-*   **🔍 SEO Optimized**: Dynamic metadata generation for every page.
-*   **🧩 Dynamic Routing**: Easily add new pages by simply creating a config file.
+- **🎨 Modern Design System** — Clean off-white + charcoal + Cambridge deep blue palette, polished Inter (sans-serif) & JetBrains Mono (monospace) typography, Framer Motion scroll animations.
+- **⚡️ High Performance** — Next.js 15 with Turbopack, fully static HTML export, font subsetting via `next/font`, instant first paint.
+- **🔍 SEO Optimized** — Structured metadata, JSON-LD `Person` structured data, auto-generated sitemap & robots.txt.
+- **📄 Section-Driven SPA** — Single-page layout with IntersectionObserver-based active nav tracking and native smooth scrolling.
+- **🛠 Data-Driven Content** — All content lives in TypeScript data files under `src/data/`; edit content without touching components.
+
+---
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-*   Node.js 22 or later
-    *   **Important**: Please download and install Node.js manually from [https://nodejs.org/en/download](https://nodejs.org/en/download).
-    *   Better not to use the pre-installed version on your system, as it may be outdated or incompatible.
-*   npm, pnpm, or yarn
+- **Node.js** 22 or later (recommend manual install)
 
 ### Installation
 
-1.  **Clone the repository:**
-
-    ```bash
-    git clone https://github.com/xyjoey/PRISM.git
-    cd PRISM
-    ```
-
-2.  **Install dependencies:**
-
-    ```bash
-    npm install
-    ```
-
-3.  **Run the development server:**
-
-    ```bash
-    npm run dev
-    ```
-
-    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## 🛠️ Configuration
-
-All content lives in the `content/` directory.
-
-### 1. Global Site Config (`content/config.toml`)
-Configure your site title, author details, social links, and navigation menu here.
-
-```toml
-[site]
-title = "Your Name"
-description = "Personal website of Your Name"
-url = "https://your-website.com"
-
-[author]
-name = "Your Name"
-title = "PhD Student / Researcher"
-# ...
-
-[features]
-enable_likes = true
+```bash
+git clone <repo-url>
+cd <project-dir>
+npm install
+npm run dev
 ```
 
-### 2. Homepage (`content/about.toml`)
-Customize the "About" section, "News", and "Selected Publications" on the homepage.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### 3. Publications (`content/publications.bib`)
-Export your publications from Google Scholar, Zotero, or Mendeley to `content/publications.bib`. PRISM automatically parses this file to generate your Publications page. Customize the display of publications by changing `selected`, `preview` and `description` keys in the bib file. 
+---
 
-Publication titles support a subset of BibTeX inline formatting commands, including `\textit{}`, `\emph{}`, `\textbf{}`, `\textsc{}`, `\textsuperscript{}` and `\textsubscript{}`.
+## 🛠️ Site Content
 
-### 4. Adding New Pages
-To add a new page (e.g., "Projects"), create a TOML file in `content/` (e.g., `content/projects.toml`) and add it to the `navigation` list in `content/config.toml`.
+All personal data lives in `src/data/` — change content, not code:
 
-Supported page types:
-*   `text`: Renders Markdown content (Great for CVs, Bio).
-*   `card`: Renders a list of cards (Great for Projects, Awards). Content of each card item supports Markdown.
-*   `publication`: Renders the full publications list with filters.
+| File                     | What to Edit                                   |
+| ------------------------ | ---------------------------------------------- |
+| `src/data/profile.ts`    | Name, tagline, CTA text, contact info, metrics |
+| `src/data/projects.ts`   | Project list, research focus areas             |
+| `src/data/experience.ts` | Work experience, education, awards             |
 
-### 5. I18N Support (`content_<locale>/`)
-PRISM now supports i18n, i.e., multi-language.
+**Example:** To update your name and bio on the homepage, just edit the `name` and `positioningLine` fields in `src/data/profile.ts`.
 
-*   Default language lives in `content/`.
-*   Additional languages live in `content_<locale>/` (for example: `content_zh/`, `content_en/`).
-*   Keep the same filenames across directories. Example:
-    *   `content/cv.md` (default)
-    *   `content_zh/cv.md`
-*   If a localized file is missing, PRISM automatically falls back to the default `content/` version.
-
-Configure language behavior in `content/config.toml`:
+---
 
 ## 📦 Deployment
-
-PRISM is optimized for static deployment.
 
 ```bash
 npm run build
 ```
 
-This generates a static `out/` directory that can be hosted anywhere.
+Generates a static `out/` directory. Deploy to **Cloudflare Pages**, **GitHub Pages**, **Vercel**, or any static host.
 
-👉 **[Read the full Deployment Guide](docs/deployment.md)** for instructions on deploying to **GitHub Pages** and **Cloudflare Pages**.
+---
 
 ## 📂 Project Structure
 
 ```
-PRISM/
-├── content/              # All user-editable content (TOML, BibTeX, MD)
-├── public/               # Static assets (images, papers)
-├── src/
-│   ├── app/              # Next.js App Router
-│   ├── components/       # React components
-│   ├── lib/              # Utility functions (parsers, config loaders)
-│   └── types/            # TypeScript definitions
-├── next.config.ts        # Next.js configuration
-└── tailwind.config.ts    # Tailwind CSS configuration
+src/
+├── app/                    # Next.js App Router
+│   ├── layout.tsx          # Root layout (fonts, metadata, nav, footer)
+│   ├── page.tsx            # Home page (composes all sections)
+│   ├── sitemap.ts          # Auto-generated sitemap.xml
+│   ├── robots.ts           # Auto-generated robots.txt
+│   └── globals.css         # Design system CSS variables & utilities
+├── components/             # React section components
+│   ├── AnimateOnScroll.tsx # Scroll-reveal animation (native IntersectionObserver)
+│   ├── Navbar.tsx          # Fixed navbar (desktop + mobile hamburger)
+│   ├── Hero.tsx            # Hero section (CTAs + Bento grid visualizations)
+│   ├── Metrics.tsx         # Key metrics row
+│   ├── ResearchFocus.tsx   # Research focus areas
+│   ├── SelectedWork.tsx    # Selected projects showcase
+│   ├── ExperienceTimeline.tsx # Work experience timeline
+│   ├── TechStack.tsx       # Tech stack display
+│   ├── Education.tsx       # Education cards
+│   ├── Awards.tsx          # Awards & achievements
+│   ├── Contact.tsx         # Contact info + CV download
+│   ├── SectionHeader.tsx   # Section title component
+│   ├── ProjectCard.tsx     # Project card
+│   └── CredibilityStrip.tsx # Credibility badges
+└── data/                   # Content data files
+    ├── profile.ts
+    ├── projects.ts
+    └── experience.ts
 ```
 
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
+---
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+MIT
