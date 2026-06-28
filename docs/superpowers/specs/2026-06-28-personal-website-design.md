@@ -49,9 +49,9 @@ English draft:
 
 Chinese draft:
 
-> 用模型让数据中隐藏的结构显现。
+> 我用模型，让数据中隐藏的结构显现。
 
-> 从物理、统计到生成模型与金融市场，用计算方法理解复杂系统。
+> 从物理、统计到生成模型与金融市场，我用计算方法理解复杂系统。
 
 The two versions are written independently. They are not displayed together.
 
@@ -65,7 +65,7 @@ English:
 
 Chinese:
 
-> 问题各不相同，思路却一以贯之：从有限的数据中寻找隐藏结构，再用恰当的模型把它解释清楚。
+> 领域会变，方法却相似：定义不可见之物，判断数据能支持什么，再用尽可能简单的模型让结构显现。
 
 Project-specific metrics remain inside the relevant project.
 
@@ -166,7 +166,7 @@ Archive entries may open an inline detail panel, but they do not link to full PD
 
 Path combines education and applied work into one concise trajectory:
 
-- UCL BSc in Theoretical Physics.
+- UCL Theoretical Physics.
 - Cambridge MPhil in Data Intensive Science.
 - Research in medical imaging, statistics, scientific computing, and machine learning.
 - Applied quantitative research in market microstructure, factors, and futures basis dynamics.
