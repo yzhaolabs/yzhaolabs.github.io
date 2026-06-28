@@ -6,9 +6,19 @@ const readJson = async (relativePath) =>
   JSON.parse(await readFile(new URL(relativePath, projectRoot), "utf8"));
 
 const sorted = (values) => [...values].sort();
+const hasText = (value) => typeof value === "string" && value.trim().length > 0;
 const words = (value) => value.trim().split(/\s+/u).filter(Boolean).length;
 const chineseChars = (value) =>
   [...value].filter((char) => /\p{Script=Han}/u.test(char)).length;
+const projectEntries = (content, locale, errors) => {
+  if (content?.projects === null ||
+      typeof content?.projects !== "object" ||
+      Array.isArray(content.projects)) {
+    errors.push(`${locale} projects must be an object`);
+    return [];
+  }
+  return Object.entries(content.projects);
+};
 
 export function validateLocaleParity(shared, en, zh) {
   const errors = [];
@@ -19,9 +29,9 @@ export function validateLocaleParity(shared, en, zh) {
       errors.push(`${locale} project IDs differ from shared project IDs`);
     }
     for (const id of shared.featuredIds) {
-      if (!content.projects[id]?.question ||
-          !content.projects[id]?.approach ||
-          !content.projects[id]?.finding) {
+      if (!hasText(content.projects[id]?.question) ||
+          !hasText(content.projects[id]?.approach) ||
+          !hasText(content.projects[id]?.finding)) {
         errors.push(`${locale}.${id} is missing featured-project copy`);
       }
     }
@@ -32,11 +42,11 @@ export function validateLocaleParity(shared, en, zh) {
 export function collectPrivacyViolations(value) {
   const text = JSON.stringify(value);
   const rules = [
-    [/[A-Z]:\\\\/u, "local Windows path"],
+    [/(?:^|[\s"'(])[a-z]:[\\/]/iu, "local Windows path"],
     [/yz929/iu, "student identifier"],
     [/gitlab\.developers\.cam\.ac\.uk/iu, "internal GitLab URL"],
     [/meeting minutes/iu, "group meeting minutes"],
-    [/\.pdf(?:"|')/iu, "public PDF link"],
+    [/\.pdf(?:[?#][^"']*)?(?=["'])/iu, "public PDF link"],
   ];
   return rules
     .filter(([pattern]) => pattern.test(text))
@@ -45,23 +55,43 @@ export function collectPrivacyViolations(value) {
 
 export function validateCopyLimits(en, zh) {
   const errors = [];
-  if (words(en.hero.supporting) > 35) {
+  const englishHero = en?.hero?.supporting;
+  if (typeof englishHero !== "string") {
+    errors.push("English hero supporting copy must be a string");
+  } else if (words(englishHero) > 35) {
     errors.push("English hero supporting copy exceeds 35 words");
   }
-  if (chineseChars(zh.hero.supporting) > 55) {
+  const chineseHero = zh?.hero?.supporting;
+  if (typeof chineseHero !== "string") {
+    errors.push("Chinese hero supporting copy must be a string");
+  } else if (chineseChars(chineseHero) > 55) {
     errors.push("Chinese hero supporting copy exceeds 55 Han characters");
   }
-  for (const [id, project] of Object.entries(en.projects)) {
-    if (words(project.archiveSummary) > 24) {
+  for (const [id, project] of projectEntries(en, "English", errors)) {
+    const archiveSummary = project?.archiveSummary;
+    if (typeof archiveSummary !== "string") {
+      errors.push(`English archive summary ${id} must be a string`);
+    } else if (words(archiveSummary) > 24) {
       errors.push(`English archive summary ${id} exceeds 24 words`);
     }
   }
-  for (const [id, project] of Object.entries(zh.projects)) {
-    if (chineseChars(project.archiveSummary) > 42) {
+  for (const [id, project] of projectEntries(zh, "Chinese", errors)) {
+    const archiveSummary = project?.archiveSummary;
+    if (typeof archiveSummary !== "string") {
+      errors.push(`Chinese archive summary ${id} must be a string`);
+    } else if (chineseChars(archiveSummary) > 42) {
       errors.push(`Chinese archive summary ${id} exceeds 42 Han characters`);
     }
   }
   return errors;
+}
+
+export function validateContent(shared, en, zh) {
+  return [
+    ...validateLocaleParity(shared, en, zh),
+    ...collectPrivacyViolations({ shared, en, zh }),
+    ...validateCopyLimits(en, zh),
+  ];
 }
 
 async function main() {
@@ -70,11 +100,7 @@ async function main() {
     readJson("src/content/en.json"),
     readJson("src/content/zh.json"),
   ]);
-  const errors = [
-    ...validateLocaleParity(shared, en, zh),
-    ...collectPrivacyViolations({ en, zh }),
-    ...validateCopyLimits(en, zh),
-  ];
+  const errors = validateContent(shared, en, zh);
   if (errors.length > 0) {
     console.error(errors.join("\n"));
     process.exitCode = 1;
