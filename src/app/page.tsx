@@ -1,14 +1,11 @@
 import { getConfig } from '@/lib/config';
 import { getMarkdownContent, getBibtexContent, getTomlContent, getPageConfig } from '@/lib/content';
 import { parseBibTeX } from '@/lib/bibtexParser';
-import Profile from '@/components/home/Profile';
-import About from '@/components/home/About';
-import SelectedPublications from '@/components/home/SelectedPublications';
-import News, { NewsItem } from '@/components/home/News';
-
+import HomePageClient, { type HomePageLocaleData } from '@/components/home/HomePageClient';
 import { Publication } from '@/types/publication';
+import { BasePageConfig, PublicationPageConfig, TextPageConfig, CardPageConfig } from '@/types/page';
+import { getRuntimeI18nConfig } from '@/lib/i18n/config';
 
-// Define types for section config
 interface SectionConfig {
   id: string;
   type: 'markdown' | 'publications' | 'list';
@@ -21,98 +18,139 @@ interface SectionConfig {
   items?: NewsItem[];
 }
 
-export default function Home() {
-  const config = getConfig();
-  const pageConfig = getPageConfig('about');
+interface NewsItem {
+  date: string;
+  content: string;
+}
 
-  if (!pageConfig) {
-    return <div>Error loading about page configuration</div>;
-  }
+type PageData =
+  | { type: 'about'; id: string; sections: SectionConfig[] }
+  | { type: 'publication'; id: string; config: PublicationPageConfig; publications: Publication[] }
+  | { type: 'text'; id: string; config: TextPageConfig; content: string }
+  | { type: 'card'; id: string; config: CardPageConfig };
 
-  // Extract research interests from page config
-  const researchInterests = (pageConfig as { profile?: { research_interests?: string[] } }).profile?.research_interests;
-
-  // Load dynamic content based on page config
-  const sections = ((pageConfig as { sections: SectionConfig[] }).sections || []).map((section: SectionConfig) => {
+function processSections(sections: SectionConfig[], locale?: string): SectionConfig[] {
+  return sections.map((section: SectionConfig) => {
     switch (section.type) {
       case 'markdown':
         return {
           ...section,
-          content: section.source ? getMarkdownContent(section.source) : ''
+          content: section.source ? getMarkdownContent(section.source, locale) : '',
         };
       case 'publications': {
-        const bibtex = getBibtexContent('publications.bib');
-        const allPubs = parseBibTeX(bibtex);
+        const bibtex = getBibtexContent('publications.bib', locale);
+        const allPubs = parseBibTeX(bibtex, locale);
         const filteredPubs = section.filter === 'selected'
-          ? allPubs.filter(p => p.selected)
+          ? allPubs.filter((p) => p.selected)
           : allPubs;
         return {
           ...section,
-          publications: filteredPubs.slice(0, section.limit || 5)
+          publications: filteredPubs.slice(0, section.limit || 5),
         };
       }
       case 'list': {
-        const newsData = section.source ? getTomlContent<{ news: NewsItem[] }>(section.source) : null;
+        const newsData = section.source ? getTomlContent<{ news: NewsItem[] }>(section.source, locale) : null;
         return {
           ...section,
-          items: newsData?.news || []
+          items: newsData?.news || [],
         };
       }
       default:
         return section;
     }
   });
-
-  return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 bg-background min-h-screen">
-      {/* Main Content Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-
-        {/* Left Column - Profile */}
-        <div className="lg:col-span-1">
-          <Profile
-            author={config.author}
-            social={config.social}
-            features={config.features}
-            researchInterests={researchInterests}
-          />
-        </div>
-
-        {/* Right Column - Content */}
-        <div className="lg:col-span-2 space-y-8">
-          {sections.map((section: SectionConfig) => {
-            switch (section.type) {
-              case 'markdown':
-                return (
-                  <About
-                    key={section.id}
-                    content={section.content || ''}
-                    title={section.title}
-                  />
-                );
-              case 'publications':
-                return (
-                  <SelectedPublications
-                    key={section.id}
-                    publications={section.publications || []}
-                    title={section.title}
-                  />
-                );
-              case 'list':
-                return (
-                  <News
-                    key={section.id}
-                    items={section.items || []}
-                    title={section.title}
-                  />
-                );
-              default:
-                return null;
-            }
-          })}
-        </div>
-      </div>
-    </div>
-  );
 }
 
+function loadPageDataForLocale(locale: string | undefined): HomePageLocaleData {
+  const localeConfig = getConfig(locale);
+  const enableOnePageMode = localeConfig.features.enable_one_page_mode;
+
+  const aboutConfig = getPageConfig<{ profile?: { research_interests?: string[] }; sections?: SectionConfig[] }>('about', locale);
+  const researchInterests = aboutConfig?.profile?.research_interests;
+
+  let pagesToShow: PageData[] = [];
+
+  if (enableOnePageMode) {
+    pagesToShow = localeConfig.navigation
+      .filter((item) => item.type === 'page')
+      .map((item) => {
+        const rawConfig = getPageConfig(item.target, locale);
+        if (!rawConfig) return null;
+
+        const pageConfig = rawConfig as BasePageConfig;
+
+        if (pageConfig.type === 'about' || 'sections' in (rawConfig as object)) {
+          return {
+            type: 'about',
+            id: item.target,
+            sections: processSections((rawConfig as { sections: SectionConfig[] }).sections || [], locale),
+          } as PageData;
+        }
+
+        if (pageConfig.type === 'publication') {
+          const pubConfig = pageConfig as PublicationPageConfig;
+          const bibtex = getBibtexContent(pubConfig.source, locale);
+          return {
+            type: 'publication',
+            id: item.target,
+            config: pubConfig,
+            publications: parseBibTeX(bibtex, locale),
+          } as PageData;
+        }
+
+        if (pageConfig.type === 'text') {
+          const textConfig = pageConfig as TextPageConfig;
+          return {
+            type: 'text',
+            id: item.target,
+            config: textConfig,
+            content: getMarkdownContent(textConfig.source, locale),
+          } as PageData;
+        }
+
+        if (pageConfig.type === 'card') {
+          return {
+            type: 'card',
+            id: item.target,
+            config: pageConfig as CardPageConfig,
+          } as PageData;
+        }
+
+        return null;
+      })
+      .filter((item): item is PageData => item !== null);
+  } else if (aboutConfig) {
+    pagesToShow = [{
+      type: 'about',
+      id: 'about',
+      sections: processSections(aboutConfig.sections || [], locale),
+    }];
+  }
+
+  return {
+    author: localeConfig.author,
+    social: localeConfig.social,
+    features: localeConfig.features,
+    enableOnePageMode,
+    researchInterests,
+    pagesToShow,
+  };
+}
+
+export default function Home() {
+  const baseConfig = getConfig();
+  const runtimeI18n = getRuntimeI18nConfig(baseConfig.i18n);
+  const targetLocales = runtimeI18n.enabled ? runtimeI18n.locales : [runtimeI18n.defaultLocale];
+
+  const dataByLocale: Record<string, HomePageLocaleData> = {};
+
+  for (const locale of targetLocales) {
+    dataByLocale[locale] = loadPageDataForLocale(locale);
+  }
+
+  if (!dataByLocale[runtimeI18n.defaultLocale]) {
+    dataByLocale[runtimeI18n.defaultLocale] = loadPageDataForLocale(undefined);
+  }
+
+  return <HomePageClient dataByLocale={dataByLocale} defaultLocale={runtimeI18n.defaultLocale} />;
+}
