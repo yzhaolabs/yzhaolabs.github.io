@@ -50,7 +50,7 @@
 
 ### (可选) 使用 GitHub Actions 自动部署
 
-本站也支持使用 GitHub Actions **自动部署到 GitHub Pages**。
+PRISM 也支持使用 GitHub Actions **自动部署到 GitHub Pages**。
 如果您希望每次推送更改时自动更新站点，推荐使用此方法。
 
 #### 如何启用
@@ -65,7 +65,7 @@
 要启用部署：
 
 1. 转到 **Settings (设置) > Pages**，在 **Build and deployment (构建和部署) > Source (来源)** 下，选择 **GitHub Actions**。
-2. 转到 **Actions** 标签页，选择 GitHub Pages 部署工作流。
+2. 转到 **Actions** 标签页，选择 **"Deploy PRISM to GitHub Pages"**。
 3. 点击 **"Enable workflow" (启用工作流)**。
 4. 使用 **Run workflow (运行工作流)** 手动运行。
 5. (可选) 要启用推送时自动部署：

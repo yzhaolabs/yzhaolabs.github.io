@@ -1,13 +1,19 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export",
+  output: 'export',
   trailingSlash: true,
   images: {
-    unoptimized: true, // required for static export
+    unoptimized: true,
   },
-  // Production build optimization
-  productionBrowserSourceMaps: false,
+  /* config options here */
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.bib$/,
+      type: 'asset/source',
+    });
+    return config;
+  },
 };
 
 export default nextConfig;
