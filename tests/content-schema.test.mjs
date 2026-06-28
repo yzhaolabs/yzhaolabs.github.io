@@ -165,17 +165,28 @@ test("in-memory: malformed copy fields aggregate actionable errors", () => {
   ]);
 });
 
-test("in-memory: malformed project collections report actionable errors", () => {
-  const en = createLocale();
-  const zh = createLocale();
-  en.projects = null;
-  zh.projects = [];
+for (const [description, malformedValue] of [
+  ["null", null],
+  ["missing", undefined],
+  ["wrong-type", "projects"],
+]) {
+  test(`in-memory: ${description} project collections report aggregate shape errors`, () => {
+    const shared = createShared();
+    const en = createLocale();
+    const zh = createLocale();
+    shared.projects = malformedValue;
+    shared.featuredIds = malformedValue;
+    en.projects = malformedValue;
+    zh.projects = malformedValue;
 
-  assert.deepEqual(validateCopyLimits(en, zh), [
-    "English projects must be an object",
-    "Chinese projects must be an object",
-  ]);
-});
+    assert.deepEqual(validateContent(shared, en, zh), [
+      "shared.projects must be an array",
+      "shared.featuredIds must be an array",
+      "en.projects must be an object",
+      "zh.projects must be an object",
+    ]);
+  });
+}
 
 test("English and Chinese content cover the same project IDs", async () => {
   const shared = await readJson("../src/content/shared.json");
@@ -185,9 +196,10 @@ test("English and Chinese content cover the same project IDs", async () => {
 });
 
 test("public content contains no private report references", async () => {
+  const shared = await readJson("../src/content/shared.json");
   const en = await readJson("../src/content/en.json");
   const zh = await readJson("../src/content/zh.json");
-  assert.deepEqual(collectPrivacyViolations({ en, zh }), []);
+  assert.deepEqual(validateContent(shared, en, zh), []);
 });
 
 test("hero and archive copy stay within the approved limits", async () => {
