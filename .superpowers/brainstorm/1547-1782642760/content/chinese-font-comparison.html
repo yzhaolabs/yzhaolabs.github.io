@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>中文字体对比</title>
+  <style>
+    :root{--paper:#f3efe6;--ink:#1b1b18;--muted:#67635b;--line:#cfc5b5;--clay:#a64f36}
+    *{box-sizing:border-box}body{margin:0;padding:48px;background:var(--paper);color:var(--ink);font-family:"DengXian","Microsoft YaHei",sans-serif}
+    header{max-width:1280px;margin:0 auto 32px}header h1{margin:0 0 8px;font-size:28px}header p{margin:0;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;max-width:1280px;margin:auto}.card{position:relative;min-height:650px;padding:28px;border:1px solid var(--line);background:rgba(255,255,255,.24);cursor:pointer}.card:hover,.card.selected{border-color:var(--clay);box-shadow:inset 0 0 0 1px var(--clay)}
+    .choice{display:flex;justify-content:space-between;margin-bottom:72px;color:var(--clay);font:12px ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase}.sample h2{max-width:8em;margin:0 0 28px;font-size:48px;font-weight:400;line-height:1.16;letter-spacing:-.035em}.sample .lead{margin:0 0 54px;color:var(--muted);font-size:17px;line-height:1.9}.rule{height:1px;margin:0 0 30px;background:var(--line)}.sample h3{margin:0 0 14px;font-size:25px;font-weight:400}.sample .body{margin:0;color:var(--muted);font-size:15px;line-height:1.85}.meta{position:absolute;right:28px;bottom:24px;left:28px;color:var(--muted);font-size:12px}
+    .a .sample h2,.a .sample h3{font-family:"STSong","SimSun",serif}.a .sample{font-family:"DengXian",sans-serif}
+    .b .sample h2,.b .sample h3{font-family:"STZhongsong","STSong",serif;font-weight:600}.b .sample{font-family:"Microsoft YaHei",sans-serif}
+    .c .sample h2,.c .sample h3{font-family:"STKaiti","KaiTi",serif}.c .sample{font-family:"DengXian",sans-serif}
+    @media(max-width:900px){body{padding:24px}.grid{grid-template-columns:1fr}.card{min-height:560px}.sample h2{font-size:42px}}
+  </style>
+</head>
+<body>
+  <header><h1>哪组中文字体更协调？</h1><p>内容、字号和间距完全相同，只比较字体性格。点击卡片选择。</p></header>
+  <main class="grid">
+    <article class="card a" data-choice="a" onclick="toggleSelect(this)"><div class="choice"><span>A · 推荐</span><span>宋体 × 等线</span></div><div class="sample"><h2>用模型让数据中隐藏的结构显现。</h2><p class="lead">从物理、统计到生成模型与金融市场，用计算方法理解复杂系统。</p><div class="rule"></div><h3>让模型接受真实证据的检验</h3><p class="body">问题各不相同，思路却一以贯之：从有限的数据中寻找隐藏结构，再用恰当的模型把它解释清楚。</p></div><p class="meta">标题：华文宋体　正文：等线</p></article>
+    <article class="card b" data-choice="b" onclick="toggleSelect(this)"><div class="choice"><span>B · 稳健</span><span>中宋 × 微软雅黑</span></div><div class="sample"><h2>用模型让数据中隐藏的结构显现。</h2><p class="lead">从物理、统计到生成模型与金融市场，用计算方法理解复杂系统。</p><div class="rule"></div><h3>让模型接受真实证据的检验</h3><p class="body">问题各不相同，思路却一以贯之：从有限的数据中寻找隐藏结构，再用恰当的模型把它解释清楚。</p></div><p class="meta">标题：华文中宋　正文：微软雅黑</p></article>
+    <article class="card c" data-choice="c" onclick="toggleSelect(this)"><div class="choice"><span>C · 人文</span><span>楷体 × 等线</span></div><div class="sample"><h2>用模型让数据中隐藏的结构显现。</h2><p class="lead">从物理、统计到生成模型与金融市场，用计算方法理解复杂系统。</p><div class="rule"></div><h3>让模型接受真实证据的检验</h3><p class="body">问题各不相同，思路却一以贯之：从有限的数据中寻找隐藏结构，再用恰当的模型把它解释清楚。</p></div><p class="meta">标题：华文楷体　正文：等线</p></article>
+  </main>
+</body>
+</html>

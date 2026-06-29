@@ -1,0 +1,200 @@
+<style>
+  .atlas-shell {
+    --ink: #171714;
+    --muted: #706f68;
+    --paper: #f7f4ed;
+    --line: rgba(23, 23, 20, .13);
+    --accent: #c85f3d;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: var(--paper);
+    color: var(--ink);
+    box-shadow: 0 24px 80px rgba(25, 20, 14, .12);
+  }
+  .atlas-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--line);
+    font: 600 12px/1.2 ui-sans-serif, sans-serif;
+    letter-spacing: .08em;
+  }
+  .atlas-links { display: flex; gap: 22px; color: var(--muted); }
+  .atlas-hero {
+    display: grid;
+    grid-template-columns: 1.35fr .65fr;
+    gap: 40px;
+    min-height: 410px;
+    padding: 54px 48px 42px;
+  }
+  .atlas-kicker {
+    color: var(--accent);
+    font: 700 10px/1.2 ui-monospace, monospace;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+  }
+  .atlas-title {
+    max-width: 760px;
+    margin: 22px 0 24px;
+    font: 400 clamp(42px, 6vw, 78px)/.96 Georgia, serif;
+    letter-spacing: -.045em;
+  }
+  .atlas-title em { color: var(--accent); font-style: italic; }
+  .atlas-deck {
+    max-width: 620px;
+    color: var(--muted);
+    font: 400 17px/1.62 ui-sans-serif, sans-serif;
+  }
+  .atlas-orbit {
+    position: relative;
+    align-self: center;
+    aspect-ratio: 1;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+  }
+  .atlas-orbit::before,
+  .atlas-orbit::after {
+    content: "";
+    position: absolute;
+    inset: 19%;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+  }
+  .atlas-orbit::after { inset: 39%; background: var(--accent); border: 0; }
+  .orbit-label {
+    position: absolute;
+    padding: 5px 8px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--paper);
+    font: 600 9px/1 ui-monospace, monospace;
+    letter-spacing: .08em;
+  }
+  .orbit-label:nth-child(1) { top: 7%; left: 37%; }
+  .orbit-label:nth-child(2) { top: 44%; right: -8%; }
+  .orbit-label:nth-child(3) { bottom: 8%; left: 34%; }
+  .orbit-label:nth-child(4) { top: 44%; left: -9%; }
+  .atlas-proof {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .proof-item { padding: 18px 22px; border-right: 1px solid var(--line); }
+  .proof-item:last-child { border-right: 0; }
+  .proof-value { font: 400 25px/1 Georgia, serif; }
+  .proof-label { margin-top: 7px; color: var(--muted); font: 500 10px/1.3 ui-sans-serif, sans-serif; }
+  .atlas-lenses { padding: 44px 48px 50px; }
+  .lenses-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+  .lenses-head h3 { margin: 0; font: 400 34px/1 Georgia, serif; }
+  .lenses-head p { max-width: 390px; margin: 0; color: var(--muted); font-size: 13px; }
+  .lens-grid { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line); }
+  .lens {
+    min-height: 128px;
+    padding: 22px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .lens:nth-child(even) { border-right: 0; }
+  .lens-num { color: var(--accent); font: 700 10px/1 ui-monospace, monospace; }
+  .lens h4 { margin: 26px 0 8px; font: 500 17px/1.2 ui-sans-serif, sans-serif; }
+  .lens p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.45; }
+  .decision-strip { margin-top: 22px; }
+  @media (max-width: 760px) {
+    .atlas-links { display: none; }
+    .atlas-hero { grid-template-columns: 1fr; padding: 38px 24px; }
+    .atlas-orbit { display: none; }
+    .atlas-proof { grid-template-columns: repeat(2, 1fr); }
+    .proof-item:nth-child(2) { border-right: 0; }
+    .atlas-lenses { padding: 36px 24px; }
+    .lenses-head { display: block; }
+    .lenses-head p { margin-top: 12px; }
+    .lens-grid { grid-template-columns: 1fr; }
+    .lens { border-right: 0; }
+  }
+</style>
+
+<h2>首页叙事结构：从履历变成“问题地图”</h2>
+<p class="subtitle">不是把项目按学科堆起来，而是让访客看见你反复使用的一套思考方式。</p>
+
+<div class="atlas-shell">
+  <div class="atlas-nav">
+    <span>YUANZHEN ZHAO</span>
+    <div class="atlas-links"><span>Questions</span><span>Work</span><span>Path</span><span>Contact</span><span>中</span></div>
+  </div>
+
+  <div class="atlas-hero">
+    <div>
+      <div class="atlas-kicker">Physicist · Researcher · Builder</div>
+      <div class="atlas-title">I build models to see what data <em>hides.</em></div>
+      <div class="atlas-deck">
+        From photons and ancient mechanisms to brain MRI, dynamic systems and financial markets —
+        I use computation to make difficult structures visible.
+      </div>
+    </div>
+    <div class="atlas-orbit" aria-hidden="true">
+      <span class="orbit-label">PHYSICS</span>
+      <span class="orbit-label">SYSTEMS</span>
+      <span class="orbit-label">MARKETS</span>
+      <span class="orbit-label">IMAGING</span>
+    </div>
+  </div>
+
+  <div class="atlas-proof">
+    <div class="proof-item"><div class="proof-value">354</div><div class="proof-label">Lunar-calendar inference</div></div>
+    <div class="proof-item"><div class="proof-value">3D MRI</div><div class="proof-label">Diffusion reconstruction</div></div>
+    <div class="proof-item"><div class="proof-value">#56</div><div class="proof-label">LOB forecasting</div></div>
+    <div class="proof-item"><div class="proof-value">Cython</div><div class="proof-label">Autodiff package</div></div>
+  </div>
+
+  <div class="atlas-lenses">
+    <div class="lenses-head">
+      <h3>Four recurring questions</h3>
+      <p>Each question opens into selected projects, a short explanation and one meaningful visual artifact.</p>
+    </div>
+    <div class="lens-grid">
+      <div class="lens">
+        <div class="lens-num">01</div>
+        <h4>How do we reconstruct what cannot be directly seen?</h4>
+        <p>3D brain MRI super-resolution · PET-CT reconstruction · MRI denoising</p>
+      </div>
+      <div class="lens">
+        <div class="lens-num">02</div>
+        <h4>How certain can we be about a hidden mechanism?</h4>
+        <p>Antikythera calendar inference · HMC · bootstrapping and sWeights</p>
+      </div>
+      <div class="lens">
+        <div class="lens-num">03</div>
+        <h4>How can models learn the dynamics of a system?</h4>
+        <p>LoRA time-series forecasting · neural representations · automatic differentiation</p>
+      </div>
+      <div class="lens">
+        <div class="lens-num">04</div>
+        <h4>What remains invariant when a problem changes domains?</h4>
+        <p>Wave optics and quantum mechanics · fluorescence lifetimes · market microstructure</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="options decision-strip">
+  <div class="option" data-choice="keep" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content"><h3>保留这个结构</h3><p>问题地图作为首页主线，项目和经历为它服务。</p></div>
+  </div>
+  <div class="option" data-choice="more-personal" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content"><h3>再增加个人气质</h3><p>加入更明显的自述、照片或生活线索。</p></div>
+  </div>
+  <div class="option" data-choice="more-work" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content"><h3>让作品更快出现</h3><p>首屏之后直接进入精选项目，缩短叙事。</p></div>
+  </div>
+</div>

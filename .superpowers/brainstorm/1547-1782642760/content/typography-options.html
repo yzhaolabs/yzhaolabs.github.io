@@ -1,0 +1,103 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Manrope:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@400;500&family=Source+Sans+3:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap');
+  .type-card {
+    --ink: #171714;
+    --muted: #706f68;
+    --paper: #f7f4ed;
+    --line: rgba(23,23,20,.14);
+    --accent: #c85f3d;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--paper);
+    color: var(--ink);
+  }
+  .type-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--line);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: .1em;
+  }
+  .type-preview { padding: 28px 24px 26px; }
+  .type-kicker { color: var(--accent); font-size: 8px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+  .type-en { margin: 14px 0 12px; font-size: clamp(31px,4vw,47px); line-height: .98; letter-spacing: -.035em; }
+  .type-zh { margin: 18px 0 10px; font-size: clamp(24px,3vw,34px); line-height: 1.25; }
+  .type-body { max-width: 620px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.65; }
+  .type-spec { display: flex; gap: 18px; padding: 14px 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 9px; }
+  .editorial .type-nav, .editorial .type-body, .editorial .type-spec { font-family: Manrope, "Noto Sans SC", sans-serif; }
+  .editorial .type-en { font-family: Newsreader, serif; }
+  .editorial .type-zh { font-family: "Noto Serif SC", serif; font-weight: 400; }
+  .scientific .type-nav, .scientific .type-en, .scientific .type-zh, .scientific .type-body { font-family: "IBM Plex Sans", "Noto Sans SC", sans-serif; }
+  .scientific .type-en { font-weight: 500; letter-spacing: -.045em; }
+  .scientific .type-zh { font-weight: 500; }
+  .scientific .type-spec, .scientific .type-kicker { font-family: "IBM Plex Mono", monospace; }
+  .journal .type-nav, .journal .type-body, .journal .type-spec { font-family: "Source Sans 3", "Noto Sans SC", sans-serif; }
+  .journal .type-en { font-family: "Source Serif 4", serif; }
+  .journal .type-zh { font-family: "Noto Serif SC", serif; }
+  .cards .card-image { padding: 0; }
+</style>
+
+<h2>中英文排版方向</h2>
+<p class="subtitle">三套都保留暖白与赤陶色，只改变“人文 / 科学 / 学术”的比例。</p>
+
+<div class="cards">
+  <div class="card" data-choice="editorial-humanist" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="type-card editorial">
+        <div class="type-nav"><span>YUANZHEN ZHAO</span><span>WORK · PATH · CONTACT · 中</span></div>
+        <div class="type-preview">
+          <div class="type-kicker">Physicist · Researcher · Builder</div>
+          <div class="type-en">I build models to see what data hides.</div>
+          <div class="type-zh">我用模型，让数据中隐藏的结构显现。</div>
+          <p class="type-body">Across physics, statistics, generative AI and markets, I follow the same habit: define what is hidden, decide what the evidence can support, and build the smallest useful model.</p>
+        </div>
+        <div class="type-spec"><span>NEWSREADER / NOTO SERIF SC</span><span>MANROPE / NOTO SANS SC</span></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A — Editorial Humanist（推荐）</h3>
+      <p>保留现在最好的编辑感，但正文更清楚，中文也有独立的节奏。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="scientific-modernist" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="type-card scientific">
+        <div class="type-nav"><span>YZ / INDEX</span><span>WORK · PATH · CONTACT · 中</span></div>
+        <div class="type-preview">
+          <div class="type-kicker">PHYSICIST / RESEARCHER / BUILDER</div>
+          <div class="type-en">I build models to see what data hides.</div>
+          <div class="type-zh">我用模型，让数据中隐藏的结构显现。</div>
+          <p class="type-body">Across physics, statistics, generative AI and markets, I follow the same habit: define what is hidden, decide what the evidence can support, and build the smallest useful model.</p>
+        </div>
+        <div class="type-spec"><span>IBM PLEX SANS</span><span>IBM PLEX MONO</span></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Scientific Modernist</h3>
+      <p>更像研究工具和实验室界面，理性、清晰，但少了一点温度。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="contemporary-journal" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="type-card journal">
+        <div class="type-nav"><span>YUANZHEN ZHAO</span><span>WORK · PATH · CONTACT · 中</span></div>
+        <div class="type-preview">
+          <div class="type-kicker">Physicist · Researcher · Builder</div>
+          <div class="type-en">I build models to see what data hides.</div>
+          <div class="type-zh">我用模型，让数据中隐藏的结构显现。</div>
+          <p class="type-body">Across physics, statistics, generative AI and markets, I follow the same habit: define what is hidden, decide what the evidence can support, and build the smallest useful model.</p>
+        </div>
+        <div class="type-spec"><span>SOURCE SERIF 4 / NOTO SERIF SC</span><span>SOURCE SANS 3</span></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Contemporary Journal</h3>
+      <p>更接近严肃出版物和研究杂志，耐看，但现代张力较弱。</p>
+    </div>
+  </div>
+</div>
