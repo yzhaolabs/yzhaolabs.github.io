@@ -1,0 +1,157 @@
+{
+  "locale": "zh",
+  "meta": {
+    "title": "赵元祯 — 物理、研究与计算",
+    "description": "横跨物理、统计、生成模型、科学计算与金融市场的研究与实践。"
+  },
+  "nav": {
+    "questions": "问题",
+    "work": "作品",
+    "archive": "索引",
+    "path": "经历",
+    "contact": "联系",
+    "language": "EN"
+  },
+  "hero": {
+    "kicker": "物理 · 研究 · 构建",
+    "heading": "用模型让数据中隐藏的结构显现。",
+    "supporting": "从物理、统计到生成模型与金融市场，用计算方法理解复杂系统。",
+    "methodLabel": "一以贯之",
+    "method": "问题各不相同，思路却一以贯之：从有限的数据中寻找隐藏结构，再用恰当的模型把它解释清楚。"
+  },
+  "questions": [
+    {
+      "id": "reconstruct",
+      "title": "如何重建无法直接观测的对象？",
+      "description": "从稀疏、含噪或间接的测量中恢复结构与信号。"
+    },
+    {
+      "id": "infer",
+      "title": "我们对隐藏机制能有多大把握？",
+      "description": "用统计推断与模型比较区分不同解释。"
+    },
+    {
+      "id": "dynamics",
+      "title": "模型如何学习系统的动力学？",
+      "description": "寻找紧凑表征，预测耦合系统如何演化。"
+    },
+    {
+      "id": "invariants",
+      "title": "问题跨越领域时，什么保持不变？",
+      "description": "追踪物理、计算与市场背后共有的数学结构。"
+    }
+  ],
+  "sections": {
+    "questions": {
+      "label": "问题图谱",
+      "heading": "四个问题，贯穿不同领域"
+    },
+    "work": {
+      "label": "代表探索",
+      "heading": "让模型接受真实证据的检验"
+    },
+    "archive": {
+      "label": "项目索引",
+      "heading": "更多实验与工具"
+    },
+    "path": {
+      "label": "经历",
+      "heading": "从物理原理到应用系统"
+    },
+    "contact": {
+      "label": "联系",
+      "heading": "聊聊新的问题"
+    }
+  },
+  "projects": {
+    "mri-super-resolution": {
+      "title": "从稀疏 MRI 切片重建解剖细节",
+      "archiveSummary": "以三维潜空间扩散模型为先验，在无配对数据下提升各向异性 MRI 分辨率。",
+      "question": "没有成对的低、高分辨率训练数据，能否从各向异性三维 MRI 中恢复诊断细节？",
+      "approach": "借助预训练三维潜空间扩散模型提供解剖先验，分别反演解码器潜变量与完整扩散过程。",
+      "finding": "与三次插值相比，重建结果呈现出更清晰的脑室边界与海马细节，并能迁移到未见数据集。",
+      "caption": "两种切片条件下，对比稀疏输入、扩散先验重建、三次插值与真实图像。",
+      "alt": "MRI 重建对比图，依次展示稀疏输入、两种扩散先验方案、三次插值与真实图像。"
+    },
+    "antikythera-calendar": {
+      "title": "从残缺几何中寻找阴历刻度",
+      "archiveSummary": "结合几何误差模型、频率学估计与 HMC，推断安提基特拉历法环的孔数。",
+      "question": "受损的历法环记录的是阴历还是阳历？",
+      "approach": "分别建立各向同性与径向—切向误差模型，并用频率学估计和 Hamiltonian Monte Carlo 比较。",
+      "finding": "两种框架都支持约 354 个孔；各向异性模型给出更窄区间，进一步支持阴历假说。",
+      "caption": "孔数后验分布与 354 天阴历、365 天阳历参考线的对比。",
+      "alt": "安提基特拉历法环孔数的后验分布图，标有 354 与 365 两条参考线。"
+    },
+    "lora-dynamics": {
+      "title": "让语言模型学习捕食者—猎物动力学",
+      "archiveSummary": "用 LoRA 微调小型语言模型，预测未见的 Lotka-Volterra 非线性轨迹。",
+      "question": "在严格算力预算下，小型语言模型能否学会非线性多变量动力学？",
+      "approach": "把数值序列转换为文本，并以 LoRA 微调 Qwen2.5-0.5B-Instruct。",
+      "finding": "微调减弱了振幅失稳，相比未训练基线，在留出轨迹上给出更稳定的预测。",
+      "caption": "在未见捕食者—猎物轨迹上，对比基线模型与 LoRA 微调模型的预测。",
+      "alt": "多组 Lotka-Volterra 轨迹折线图，对比基线与 LoRA 微调后的预测。"
+    },
+    "medical-imaging": {
+      "title": "医学影像工具集",
+      "archiveSummary": "整合 PET-CT 重建、MRI 去噪、分割与影像组学的一套处理流程。"
+    },
+    "dual-autodiff": {
+      "title": "Dual Autodiff",
+      "archiveSummary": "基于双数实现并经测试、文档化与 Cython 优化的前向自动微分包。"
+    },
+    "statistical-estimation": {
+      "title": "统计估计",
+      "archiveSummary": "以采样、扩展似然、参数自助法与 sWeights 估计隐藏参数。"
+    },
+    "fluorescence-lifetimes": {
+      "title": "荧光寿命",
+      "archiveSummary": "模拟并比较时间相关单光子计数与相位荧光测量。"
+    },
+    "quantum-optics": {
+      "title": "光学现象中的量子图景",
+      "archiveSummary": "用数值实验连接近轴波动光学与薛定谔方程。"
+    },
+    "lob-forecasting": {
+      "title": "限价订单簿预测",
+      "archiveSummary": "面向稳定 CPU 推理的多时间尺度订单流预测。"
+    },
+    "futures-basis": {
+      "title": "股指期货基差动力学",
+      "archiveSummary": "考虑交易成本的套保配置与移仓分析，适应变化的基差环境。"
+    }
+  },
+  "path": [
+    {
+      "period": "2021–2024",
+      "title": "理论物理学学士",
+      "subtitle": "伦敦大学学院",
+      "summary": "系统学习数学物理、数值方法、光学与统计推理。"
+    },
+    {
+      "period": "2024–2025",
+      "title": "数据密集型科学哲学硕士",
+      "subtitle": "剑桥大学",
+      "summary": "研究覆盖医学影像、统计推断、科学计算与机器学习。"
+    },
+    {
+      "period": "2025",
+      "title": "模型与测量研究",
+      "subtitle": "影像、统计与生成模型",
+      "summary": "用计算重建隐藏解剖结构、检验几何假说并学习非线性动力学。"
+    },
+    {
+      "period": "2025–至今",
+      "title": "应用量化研究",
+      "subtitle": "市场微观结构与系统化研究",
+      "summary": "在真实执行约束下研究订单流、因子与股指期货基差动力学。"
+    }
+  ],
+  "contact": {
+    "heading": "也在思考如何从证据走向结构？",
+    "body": "欢迎交流研究、科学计算、生成模型与量化系统。",
+    "email": "mailto:yuanzhenzhao622@gmail.com",
+    "github": "https://github.com/yzhaolabs",
+    "linkedin": "https://www.linkedin.com/in/zhaoyuanzhen"
+  },
+  "footer": "赵元祯"
+}

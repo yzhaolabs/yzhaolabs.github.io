@@ -1,0 +1,157 @@
+{
+  "locale": "en",
+  "meta": {
+    "title": "Yuanzhen Zhao — Physicist, Researcher, Builder",
+    "description": "Cross-disciplinary work in physics, statistics, generative modelling, scientific computing, and markets."
+  },
+  "nav": {
+    "questions": "Questions",
+    "work": "Work",
+    "archive": "Archive",
+    "path": "Path",
+    "contact": "Contact",
+    "language": "中文"
+  },
+  "hero": {
+    "kicker": "Physicist · Researcher · Builder",
+    "heading": "I build models to see what data hides.",
+    "supporting": "Across physics, statistics, generative AI and markets, I use computation to make difficult structures visible.",
+    "methodLabel": "A recurring habit",
+    "method": "Across different domains, the method stays surprisingly consistent: define what is hidden, decide what the data can support, and build the smallest model that makes the structure visible."
+  },
+  "questions": [
+    {
+      "id": "reconstruct",
+      "title": "How do we reconstruct what cannot be directly seen?",
+      "description": "Recovering anatomy and signals from sparse, noisy, or indirect measurements."
+    },
+    {
+      "id": "infer",
+      "title": "How certain can we be about a hidden mechanism?",
+      "description": "Separating plausible explanations with statistical inference and model comparison."
+    },
+    {
+      "id": "dynamics",
+      "title": "How can models learn the dynamics of a system?",
+      "description": "Building compact representations that forecast how coupled systems evolve."
+    },
+    {
+      "id": "invariants",
+      "title": "What remains invariant when a problem changes domains?",
+      "description": "Tracing shared mathematical structure across physics, computation, and markets."
+    }
+  ],
+  "sections": {
+    "questions": {
+      "label": "Problem atlas",
+      "heading": "Four questions, many domains"
+    },
+    "work": {
+      "label": "Selected explorations",
+      "heading": "Models tested against real evidence"
+    },
+    "archive": {
+      "label": "Archive",
+      "heading": "Further experiments and tools"
+    },
+    "path": {
+      "label": "Path",
+      "heading": "From physical principles to applied systems"
+    },
+    "contact": {
+      "label": "Contact",
+      "heading": "Start a conversation"
+    }
+  },
+  "projects": {
+    "mri-super-resolution": {
+      "title": "Recovering anatomy from sparse MRI slices",
+      "archiveSummary": "Unpaired 3D super-resolution using a latent diffusion prior to recover fine anatomy from anisotropic MRI.",
+      "question": "Can diagnostic detail be recovered from anisotropic 3D MRI without paired low- and high-resolution training data?",
+      "approach": "Use a pre-trained 3D latent diffusion model as an anatomical prior and invert either the decoder latent or the full diffusion process.",
+      "finding": "The approach restored sharper ventricular boundaries and fine hippocampal structure than cubic interpolation, including on an unseen dataset.",
+      "caption": "Sparse input, reconstruction variants, cubic interpolation, and ground truth compared across two slice conditions.",
+      "alt": "MRI comparison showing sparse input, two diffusion-prior reconstructions, cubic interpolation, and ground truth."
+    },
+    "antikythera-calendar": {
+      "title": "Finding a lunar calendar in fragmented geometry",
+      "archiveSummary": "Statistical inference on the Antikythera calendar ring using geometric error models, estimation, and HMC.",
+      "question": "Did the damaged calendar ring encode a lunar or solar calendar?",
+      "approach": "Compare isotropic and radial-tangential error models with frequentist estimation and Hamiltonian Monte Carlo.",
+      "finding": "Both frameworks favoured approximately 354 holes; the anisotropic model produced a narrower interval and supported the lunar-calendar hypothesis.",
+      "caption": "Posterior hole-count estimates shown against the 354-day lunar and 365-day solar references.",
+      "alt": "Posterior distribution for the Antikythera calendar-ring hole count with reference lines at 354 and 365."
+    },
+    "lora-dynamics": {
+      "title": "Teaching a language model predator-prey dynamics",
+      "archiveSummary": "LoRA fine-tuning of a compact language model for held-out nonlinear Lotka-Volterra forecasting.",
+      "question": "Can a compact language model learn nonlinear multivariate dynamics under a strict compute budget?",
+      "approach": "Apply numerical-to-text preprocessing and LoRA fine-tuning to Qwen2.5-0.5B-Instruct.",
+      "finding": "Fine-tuning reduced amplitude instability and produced more stable held-out forecasts than the untrained baseline.",
+      "caption": "Forecasts on held-out predator-prey trajectories compare the baseline with the LoRA-adapted model.",
+      "alt": "Line plots comparing baseline and LoRA-adapted forecasts for held-out Lotka-Volterra trajectories."
+    },
+    "medical-imaging": {
+      "title": "Medical Imaging Toolkit",
+      "archiveSummary": "PET-CT reconstruction, MRI denoising, segmentation, and radiomics assembled into one imaging workflow."
+    },
+    "dual-autodiff": {
+      "title": "Dual Autodiff",
+      "archiveSummary": "A tested, documented, and Cythonised forward-mode automatic-differentiation package built with dual numbers."
+    },
+    "statistical-estimation": {
+      "title": "Statistical Estimation",
+      "archiveSummary": "Sampling, extended likelihood, parametric bootstrapping, and sWeights applied to hidden-parameter estimation."
+    },
+    "fluorescence-lifetimes": {
+      "title": "Fluorescence Lifetimes",
+      "archiveSummary": "Simulation and comparison of time-correlated single-photon counting and phase fluorimetry."
+    },
+    "quantum-optics": {
+      "title": "Quantum Insights into Optical Phenomena",
+      "archiveSummary": "Numerical links between paraxial wave optics and the Schrödinger equation."
+    },
+    "lob-forecasting": {
+      "title": "Limit Order Book Forecasting",
+      "archiveSummary": "Multi-horizon order-flow prediction designed around stable CPU inference."
+    },
+    "futures-basis": {
+      "title": "Index Futures Basis Dynamics",
+      "archiveSummary": "Transaction-cost-aware hedge allocation and roll analysis for changing futures basis conditions."
+    }
+  },
+  "path": [
+    {
+      "period": "2021–2024",
+      "title": "BSc Theoretical Physics",
+      "subtitle": "University College London",
+      "summary": "Built a foundation in mathematical physics, numerical methods, optics, and statistical reasoning."
+    },
+    {
+      "period": "2024–2025",
+      "title": "MPhil Data Intensive Science",
+      "subtitle": "University of Cambridge",
+      "summary": "Worked across medical imaging, statistical inference, scientific computing, and machine learning."
+    },
+    {
+      "period": "2025",
+      "title": "Research across models and measurement",
+      "subtitle": "Imaging, statistics, and generative modelling",
+      "summary": "Used computation to reconstruct hidden anatomy, test geometric hypotheses, and learn nonlinear dynamics."
+    },
+    {
+      "period": "2025–present",
+      "title": "Applied quantitative research",
+      "subtitle": "Market microstructure and systematic research",
+      "summary": "Studies order flow, factors, and futures basis dynamics under practical execution constraints."
+    }
+  ],
+  "contact": {
+    "heading": "Interested in models that connect evidence to structure?",
+    "body": "I am open to conversations about research, scientific computing, generative modelling, and quantitative systems.",
+    "email": "mailto:yuanzhenzhao622@gmail.com",
+    "github": "https://github.com/yzhaolabs",
+    "linkedin": "https://www.linkedin.com/in/zhaoyuanzhen"
+  },
+  "footer": "Yuanzhen Zhao"
+}

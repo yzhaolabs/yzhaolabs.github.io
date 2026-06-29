@@ -1,0 +1,79 @@
+{
+  "featuredIds": [
+    "mri-super-resolution",
+    "antikythera-calendar",
+    "lora-dynamics"
+  ],
+  "projects": [
+    {
+      "id": "mri-super-resolution",
+      "year": "2025",
+      "questionId": "reconstruct",
+      "visual": "/work/mri-super-resolution.webp",
+      "featured": true
+    },
+    {
+      "id": "antikythera-calendar",
+      "year": "2025",
+      "questionId": "infer",
+      "visual": "/work/antikythera-posterior.svg",
+      "featured": true
+    },
+    {
+      "id": "lora-dynamics",
+      "year": "2025",
+      "questionId": "dynamics",
+      "visual": "/work/lora-dynamics.webp",
+      "featured": true
+    },
+    {
+      "id": "medical-imaging",
+      "year": "2025",
+      "questionId": "reconstruct",
+      "visual": "/work/medical-imaging.svg",
+      "featured": false
+    },
+    {
+      "id": "dual-autodiff",
+      "year": "2024",
+      "questionId": "dynamics",
+      "visual": "/work/autodiff.svg",
+      "featured": false
+    },
+    {
+      "id": "statistical-estimation",
+      "year": "2024",
+      "questionId": "infer",
+      "visual": null,
+      "featured": false
+    },
+    {
+      "id": "fluorescence-lifetimes",
+      "year": "2024",
+      "questionId": "invariants",
+      "visual": null,
+      "featured": false
+    },
+    {
+      "id": "quantum-optics",
+      "year": "2023",
+      "questionId": "invariants",
+      "visual": "/work/quantum-optics.webp",
+      "featured": false
+    },
+    {
+      "id": "lob-forecasting",
+      "year": "2025",
+      "questionId": "invariants",
+      "visual": null,
+      "featured": false
+    },
+    {
+      "id": "futures-basis",
+      "year": "2026",
+      "questionId": "dynamics",
+      "visual": null,
+      "featured": false
+    }
+  ]
+}
