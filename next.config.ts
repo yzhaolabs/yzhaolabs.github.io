@@ -1,11 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'export',
+  output: "export",
   trailingSlash: true,
   images: {
-    unoptimized: true,
+    unoptimized: true, // required for static export
   },
+  // Production build optimization
+  productionBrowserSourceMaps: false,
 };
 
 export default nextConfig;

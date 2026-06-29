@@ -1,7 +1,7 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 
 /** @type {import('tailwindcss').Config} */
-const config = {
+export default {
   darkMode: 'class', // Enable class strategy so `dark:` variants respond to the `.dark` class
   content: [
     './src/**/*.{js,ts,jsx,tsx,mdx}',
@@ -45,6 +45,4 @@ const config = {
     },
   },
   plugins: [],
-};
-
-export default config;
+}; 
