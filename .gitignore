@@ -43,7 +43,7 @@ next-env.d.ts
 # wrangler
 .wrangler
 
-# agent tooling
-.omo/
-.omx/
-.superpowers/
+# opencode
+.omo/*
+.omx/*
+.superpowers/*
