@@ -47,7 +47,7 @@ This guide is designed for beginners. You don't need complex configurations to d
 
 ### (Optional) Deploy Automatically with GitHub Actions
 
-PRISM also supports **automatic deployment to GitHub Pages** using GitHub Actions.  
+The site also supports **automatic deployment to GitHub Pages** using GitHub Actions.
 This method is recommended if you want your site to update automatically whenever you push changes.
 
 #### How to enable
@@ -62,7 +62,7 @@ For template users, GitHub disables workflows by default.
 To enable deployment:
 
 1. Go to **Settings > Pages**, and under **Build and deployment > Source**, choose **GitHub Actions**.
-2. Go to **Actions** Tab, and select **"Deploy PRISM to GitHub Pages"**.
+2. Go to **Actions**, and select the GitHub Pages deployment workflow.
 3. Click **"Enable workflow"**.
 4. Run manually using **Run workflow**.
 5. (Optional) To enable automatic deployment on push:  

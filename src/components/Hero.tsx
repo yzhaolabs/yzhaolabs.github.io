@@ -1,0 +1,4 @@
+import type { Locale, SiteContent } from "@/content/types";
+export default function Hero({ locale, content }: { locale: Locale; content: SiteContent["hero"] }) {
+  return <><section id="top" className="hero section-shell"><div className="hero-copy"><p className="eyebrow">{content.kicker}</p><h1>{content.heading}</h1><p className="hero-supporting">{content.supporting}</p><div className="hero-actions"><a className="primary-link" href="#work">{locale === "en" ? "Explore the work" : "查看作品"}</a><a className="text-link" href="#contact">{locale === "en" ? "Get in touch" : "与我联系"}</a></div></div><div className="field-map" aria-hidden="true"><span className="orbit orbit-a"/><span className="orbit orbit-b"/><span className="node node-a">φ</span><span className="node node-b">Δ</span></div></section><section className="method-strip section-shell"><p className="eyebrow">{content.methodLabel}</p><p className="method-statement">{content.method}</p></section></>;
+}
