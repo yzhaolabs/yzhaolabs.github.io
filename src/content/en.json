@@ -122,16 +122,10 @@
   },
   "path": [
     {
-      "period": "2021–2024",
-      "title": "BSc Theoretical Physics",
-      "subtitle": "University College London",
-      "summary": "Built a foundation in mathematical physics, numerical methods, optics, and statistical reasoning."
-    },
-    {
-      "period": "2024–2025",
-      "title": "MPhil Data Intensive Science",
-      "subtitle": "University of Cambridge",
-      "summary": "Worked across medical imaging, statistical inference, scientific computing, and machine learning."
+      "period": "2025–present",
+      "title": "Applied quantitative research",
+      "subtitle": "Market microstructure and systematic research",
+      "summary": "Studies order flow, factors, and futures basis dynamics under practical execution constraints."
     },
     {
       "period": "2025",
@@ -140,10 +134,16 @@
       "summary": "Used computation to reconstruct hidden anatomy, test geometric hypotheses, and learn nonlinear dynamics."
     },
     {
-      "period": "2025–present",
-      "title": "Applied quantitative research",
-      "subtitle": "Market microstructure and systematic research",
-      "summary": "Studies order flow, factors, and futures basis dynamics under practical execution constraints."
+      "period": "2024–2025",
+      "title": "MPhil Data Intensive Science",
+      "subtitle": "University of Cambridge",
+      "summary": "Worked across medical imaging, statistical inference, scientific computing, and machine learning."
+    },
+    {
+      "period": "2021–2024",
+      "title": "BSc Theoretical Physics",
+      "subtitle": "University College London",
+      "summary": "Built a foundation in mathematical physics, numerical methods, optics, and statistical reasoning."
     }
   ],
   "contact": {

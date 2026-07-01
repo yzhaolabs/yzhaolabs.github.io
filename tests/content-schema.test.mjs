@@ -195,3 +195,23 @@ test("hero and archive copy stay within the approved limits", async () => {
   const zh = await readJson("../src/content/zh.json");
   assert.deepEqual(validateCopyLimits(en, zh), []);
 });
+
+test("archive projects are ordered newest first", async () => {
+  const shared = await readJson("../src/content/shared.json");
+  const years = shared.projects.map(({ year }) => Number(year));
+
+  assert.deepEqual(years, [...years].sort((left, right) => right - left));
+});
+
+test("path entries are ordered newest first in each locale", async () => {
+  for (const locale of ["en", "zh"]) {
+    const content = await readJson(`../src/content/${locale}.json`);
+    const years = content.path.map(({ period }) => Number.parseInt(period, 10));
+
+    assert.deepEqual(
+      years,
+      [...years].sort((left, right) => right - left),
+      `${locale} path is not newest first`,
+    );
+  }
+});

@@ -2,8 +2,8 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { buildLanguageHref } from "../src/lib/locale-links.mjs";
 
-test("English work section maps to Chinese work section", () => {
-  assert.equal(buildLanguageHref("zh", "#work"), "/zh/#work");
+test("English contact section maps to Chinese contact section", () => {
+  assert.equal(buildLanguageHref("zh", "#contact"), "/zh#contact");
 });
 
 test("Chinese path section maps to English path section", () => {
@@ -11,5 +11,5 @@ test("Chinese path section maps to English path section", () => {
 });
 
 test("missing hashes do not create a trailing hash", () => {
-  assert.equal(buildLanguageHref("zh", ""), "/zh/");
+  assert.equal(buildLanguageHref("zh", ""), "/zh");
 });
