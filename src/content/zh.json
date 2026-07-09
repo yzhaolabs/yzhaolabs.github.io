@@ -1,8 +1,8 @@
 {
   "locale": "zh",
   "meta": {
-    "title": "赵元祯 — 物理、研究与计算",
-    "description": "横跨物理、统计、生成模型、科学计算与金融市场的研究与实践。"
+    "title": "赵元祯 - 量化研究与机器学习",
+    "description": "聚焦高频数据、市场微观结构、时间序列预测与科学计算的量化研究和机器学习主页。"
   },
   "nav": {
     "questions": "问题",
@@ -13,50 +13,50 @@
     "language": "EN"
   },
   "hero": {
-    "kicker": "物理 · 研究 · 构建",
-    "heading": "用模型让数据中隐藏的结构显现。",
-    "supporting": "从物理、统计到生成模型与金融市场，用计算方法理解复杂系统。",
+    "kicker": "量化研究 · 机器学习 · 科学计算",
+    "heading": "为嘈杂市场与复杂系统构建模型。",
+    "supporting": "以数据密集型科学和理论物理为基础，研究高频数据、市场微观结构和时间序列预测。",
     "methodLabel": "一以贯之",
-    "method": "问题各不相同，思路却一以贯之：从有限的数据中寻找隐藏结构，再用恰当的模型把它解释清楚。"
+    "method": "无论面对市场数据、物理问题还是科学计算，我都先明确隐藏结构，再检验数据能支持什么，最后构建经得起验证的模型。"
   },
   "questions": [
     {
-      "id": "reconstruct",
-      "title": "如何重建无法直接观测的对象？",
-      "description": "从稀疏、含噪或间接的测量中恢复结构与信号。"
+      "id": "dynamics",
+      "title": "市场动力学如何随时间尺度变化？",
+      "description": "研究期货与股票数据在日内、日频和跨合约维度上的变化。"
     },
     {
       "id": "infer",
-      "title": "我们对隐藏机制能有多大把握？",
-      "description": "用统计推断与模型比较区分不同解释。"
-    },
-    {
-      "id": "dynamics",
-      "title": "模型如何学习系统的动力学？",
-      "description": "寻找紧凑表征，预测耦合系统如何演化。"
+      "title": "哪些信号能在样本外保持稳定？",
+      "description": "通过因子研究、净化验证、消融实验和稳健性检查区分信号与噪声。"
     },
     {
       "id": "invariants",
-      "title": "问题跨越领域时，什么保持不变？",
-      "description": "追踪物理、计算与市场背后共有的数学结构。"
+      "title": "什么结构可以跨领域迁移？",
+      "description": "在物理、计算和金融市场之间寻找共通的建模模式。"
+    },
+    {
+      "id": "reconstruct",
+      "title": "如何从稀疏观测恢复隐藏状态？",
+      "description": "从有限、含噪或间接的数据中恢复潜在结构。"
     }
   ],
   "sections": {
     "questions": {
-      "label": "问题图谱",
-      "heading": "四个问题，贯穿不同领域"
+      "label": "研究图谱",
+      "heading": "工作背后的问题"
     },
     "work": {
-      "label": "代表探索",
+      "label": "代表项目",
       "heading": "让模型接受真实证据的检验"
     },
     "archive": {
       "label": "项目索引",
-      "heading": "更多实验与工具"
+      "heading": "更多项目与工具"
     },
     "path": {
       "label": "经历",
-      "heading": "从物理原理到应用系统"
+      "heading": "从物理原理到量化系统"
     },
     "contact": {
       "label": "联系",
@@ -64,6 +64,13 @@
     }
   },
   "projects": {
+    "ashare-hf-framework": {
+      "title": "A 股高频深度学习框架",
+      "archiveSummary": "以 Mamba-3、GRU 和 Transformer 注意力做 A 股高频多尺度序列建模。",
+      "question": "A 股高频预测能否把微观结构特征与跨时间尺度的序列模型结合起来？",
+      "approach": "构建 Mamba-3 状态空间模型、因果 GRU 和 Transformer 交叉注意力架构，支持单卡、多卡训练、推理、日志和模型比较。",
+      "finding": "形成可扩展研究底座，用于测试超越单窗口特征的市场微观结构假设，并逐步结合序列、图和基本面信号。"
+    },
     "mri-super-resolution": {
       "title": "从稀疏 MRI 切片重建解剖细节",
       "archiveSummary": "以三维潜空间扩散模型为先验，在无配对数据下提升各向异性 MRI 分辨率。",
@@ -83,11 +90,11 @@
       "alt": "安提基特拉历法环孔数的后验分布图，标有 354 与 365 两条参考线。"
     },
     "lora-dynamics": {
-      "title": "让语言模型学习捕食者—猎物动力学",
-      "archiveSummary": "用 LoRA 微调小型语言模型，预测未见的 Lotka-Volterra 非线性轨迹。",
-      "question": "在严格算力预算下，小型语言模型能否学会非线性多变量动力学？",
-      "approach": "把数值序列转换为文本，并以 LoRA 微调 Qwen2.5-0.5B-Instruct。",
-      "finding": "微调减弱了振幅失稳，相比未训练基线，在留出轨迹上给出更稳定的预测。",
+      "title": "面向时间序列预测的 LoRA 微调",
+      "archiveSummary": "用 LoRA 适配 Qwen2.5-0.5B-Instruct，在有限算力下预测非线性多变量序列。",
+      "question": "参数高效微调能否让小型指令模型适应非线性多变量时间序列预测？",
+      "approach": "以 LoRA 微调 Qwen2.5-0.5B-Instruct，并用 LLMTIME 风格流程把数值序列转为 token 输入。",
+      "finding": "相比原生模型，预测误差约降低 20%，支持将 PEFT 适配的语言模型用于非线性动力学建模。",
       "caption": "在未见捕食者—猎物轨迹上，对比基线模型与 LoRA 微调模型的预测。",
       "alt": "多组 Lotka-Volterra 轨迹折线图，对比基线与 LoRA 微调后的预测。"
     },
@@ -96,7 +103,7 @@
       "archiveSummary": "整合 PET-CT 重建、MRI 去噪、分割与影像组学的一套处理流程。"
     },
     "dual-autodiff": {
-      "title": "Dual Autodiff",
+      "title": "二元数自动微分",
       "archiveSummary": "基于双数实现并经测试、文档化与 Cython 优化的前向自动微分包。"
     },
     "statistical-estimation": {
@@ -112,46 +119,55 @@
       "archiveSummary": "用数值实验连接近轴波动光学与薛定谔方程。"
     },
     "lob-forecasting": {
-      "title": "限价订单簿预测",
-      "archiveSummary": "面向稳定 CPU 推理的多时间尺度订单流预测。"
+      "title": "WunderFund 限价订单簿预测",
+      "archiveSummary": "多时间尺度订单簿建模与 ONNX 推理，全球排名 #56 / 4,966。",
+      "question": "匿名限价订单簿序列能否预测与价格变动相关的未来加权成交量？",
+      "approach": "用编码器和 PCA 压缩多档价量特征，并集成 LightGBM 与 LSTM，转换为 ONNX 提升 CPU 推理。",
+      "finding": "样本外加权 IC 均值约 0.19，全球排名 #56 / 4,966，进入前 1.2%。"
     },
     "futures-basis": {
       "title": "股指期货基差动力学",
-      "archiveSummary": "考虑交易成本的套保配置与移仓分析，适应变化的基差环境。"
+      "archiveSummary": "面向市场中性对冲的基差因子研究，使对冲腿年化收益约提升 8 个百分点。",
+      "question": "当基差季节性和收敛行为变化时，股票市场中性策略应如何选择股指期货空头合约？",
+      "approach": "构建跨合约基差因子、期限结构特征、持仓量交互信号和价量微观结构变量，并进行分层回测。",
+      "finding": "在固定空头暴露下，Ridge 模型相对远季合约移仓基线将对冲腿年化收益约提升 8 个百分点。"
     }
   },
   "path": [
     {
-      "period": "2025–至今",
-      "title": "应用量化研究",
-      "subtitle": "市场微观结构与系统化研究",
-      "summary": "在真实执行约束下研究订单流、因子与股指期货基差动力学。"
+      "period": "2026-至今",
+      "title": "量化研究实习生",
+      "subtitle": "启林投资，上海",
+      "summary": "研究股票市场中性策略中的股指期货对冲模块，关注基差季节性、收敛行为和空头合约选择。"
     },
     {
-      "period": "2025",
-      "title": "模型与测量研究",
-      "subtitle": "影像、统计与生成模型",
-      "summary": "用计算重建隐藏解剖结构、检验几何假说并学习非线性动力学。"
+      "period": "2025-2026",
+      "title": "量化研究实习生",
+      "subtitle": "红猫投资，上海",
+      "summary": "处理 L2 期货快照、拼接主力合约、构建分钟级价量因子，并用净化交叉验证评估 LightGBM 流程。"
     },
     {
-      "period": "2024–2025",
+      "period": "2024-2026",
       "title": "数据密集型科学哲学硕士",
       "subtitle": "剑桥大学",
-      "summary": "研究覆盖医学影像、统计推断、科学计算与机器学习。"
+      "summary": "学习机器学习、深度学习、高等统计和研究计算；GPA 3.75/4.0，前 15%。"
     },
     {
-      "period": "2021–2024",
+      "period": "2021-2024",
       "title": "理论物理学学士",
       "subtitle": "伦敦大学学院",
-      "summary": "系统学习数学物理、数值方法、光学与统计推理。"
+      "summary": "建立计算物理、建模、高等线性代数和粒子物理基础；GPA 3.96/4.0，前 2%。"
     }
   ],
   "contact": {
-    "heading": "也在思考如何从证据走向结构？",
-    "body": "欢迎交流研究、科学计算、生成模型与量化系统。",
-    "email": "mailto:yuanzhenzhao622@gmail.com",
+    "heading": "对量化研究、高频数据或时间序列模型感兴趣？",
+    "body": "欢迎交流市场微观结构、特征工程、模型验证、科学计算和机器学习系统。",
+    "email": "mailto:j.zhao02@outlook.com",
     "github": "https://github.com/yzhaolabs",
     "linkedin": "https://www.linkedin.com/in/zhaoyuanzhen"
   },
   "footer": "赵元祯"
 }
+
+
+

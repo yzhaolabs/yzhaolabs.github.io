@@ -1,10 +1,17 @@
 {
   "featuredIds": [
-    "mri-super-resolution",
-    "antikythera-calendar",
+    "ashare-hf-framework",
+    "lob-forecasting",
     "lora-dynamics"
   ],
   "projects": [
+    {
+      "id": "ashare-hf-framework",
+      "year": "2026",
+      "questionId": "dynamics",
+      "visual": null,
+      "featured": true
+    },
     {
       "id": "futures-basis",
       "year": "2026",
@@ -13,17 +20,10 @@
       "featured": false
     },
     {
-      "id": "mri-super-resolution",
-      "year": "2025",
-      "questionId": "reconstruct",
-      "visual": "/work/mri-super-resolution.webp",
-      "featured": true
-    },
-    {
-      "id": "antikythera-calendar",
-      "year": "2025",
-      "questionId": "infer",
-      "visual": "/work/antikythera-posterior.svg",
+      "id": "lob-forecasting",
+      "year": "2026",
+      "questionId": "invariants",
+      "visual": null,
       "featured": true
     },
     {
@@ -34,16 +34,23 @@
       "featured": true
     },
     {
-      "id": "medical-imaging",
+      "id": "mri-super-resolution",
       "year": "2025",
       "questionId": "reconstruct",
-      "visual": null,
+      "visual": "/work/mri-super-resolution.webp",
       "featured": false
     },
     {
-      "id": "lob-forecasting",
+      "id": "antikythera-calendar",
       "year": "2025",
-      "questionId": "invariants",
+      "questionId": "infer",
+      "visual": "/work/antikythera-posterior.svg",
+      "featured": false
+    },
+    {
+      "id": "medical-imaging",
+      "year": "2025",
+      "questionId": "reconstruct",
       "visual": null,
       "featured": false
     },

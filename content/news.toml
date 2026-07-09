@@ -1,7 +1,11 @@
 [[news]]
-date = "2025-11"
-content = "Our work has been accepted by a prestigious journal 🎉"
+date = "2026-06"
+content = "Started building an A-share high-frequency deep learning framework for multi-scale sequence modelling."
 
 [[news]]
-date = "2025-09"
-content = "Starting my PhD at the University of Example"
+date = "2026-05"
+content = "Joined Qilin Investment as a Quantitative Research Intern, working on index-futures hedging for equity market-neutral strategies."
+
+[[news]]
+date = "2026-03"
+content = "Ranked #56 / 4,966 globally in the WunderFund Limit Order Book Prediction Competition."

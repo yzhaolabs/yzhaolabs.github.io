@@ -1,27 +1,27 @@
 type = "card"
 title = "奖项"
-description = "我获得的荣誉与奖项。"
+description = "竞赛与荣誉。"
 
 [[items]]
-title = "示例奖项"
-subtitle = "颁发机构"
-date = "2025"
-content = "奖项说明。"
+title = "IMC Prosperity 4 Trading Challenge"
+subtitle = "全球交易竞赛"
+date = "2026"
+content = "全球 #327 / 22,130，前 1.4%。"
 
 [[items]]
-title = "示例奖项"
-subtitle = "颁发机构"
-date = "2024"
-content = "奖项说明。"
+title = "WunderFund 限价订单簿预测竞赛"
+subtitle = "市场微观结构建模"
+date = "2026"
+content = "全球 #56 / 4,966，前 1.2%，样本外加权 IC 均值约 0.19。"
 
 [[items]]
-title = "示例奖项"
-subtitle = "颁发机构"
-date = "2023"
-content = "奖项说明。"
+title = "英国物理奥林匹克"
+subtitle = "物理竞赛"
+date = "2021"
+content = "Top Gold。"
 
 [[items]]
-title = "示例奖项"
-subtitle = "颁发机构"
-date = "2022"
-content = "奖项说明。"
+title = "英国数学奥林匹克"
+subtitle = "数学竞赛"
+date = "2021"
+content = "Top Gold，全国前 50。"

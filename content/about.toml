@@ -3,9 +3,11 @@ title = "About"
 
 [profile]
 research_interests = [
-  "Computational Physics",
-  "Mathematical Principles",
-  "Proof of Theorems"
+  "Quantitative Research",
+  "Market Microstructure",
+  "High-Frequency Data",
+  "Time-Series Prediction",
+  "Scientific Computing"
 ]
 
 [[sections]]
@@ -15,15 +17,7 @@ source = "bio.md"
 title = "About"
 
 [[sections]]
-id = "featured_publications"
-type = "publications"
-title = "Selected Publications"
-filter = "selected"
-limit = 5
-
-[[sections]]
 id = "news"
 type = "list"
 title = "News"
 source = "news.toml"
-

@@ -1,19 +1,22 @@
 [site]
-title = "刘嘉乐"
-description = "某某大学博士生个人主页。"
-last_updated = "2025年11月18日"
+title = "赵元祯"
+description = "聚焦高频数据、市场微观结构、时间序列预测与科学计算的量化研究和机器学习主页。"
+last_updated = "2026年7月9日"
 
 [author]
-name = "刘嘉乐"
-title = "博士生"
-institution = "某某大学"
+name = "赵元祯"
+title = "量化研究 / 机器学习"
+institution = "剑桥大学"
 
 [social]
-location = "城市，国家"
+email = "j.zhao02@outlook.com"
+location = "剑桥 / 上海"
 location_details = [
-  "理科楼 123 室，",
-  "大学路，城市，国家"
+  "剑桥大学",
+  "量化研究与机器学习"
 ]
+github = "https://github.com/yzhaolabs"
+linkedin = "https://www.linkedin.com/in/zhaoyuanzhen"
 
 [[navigation]]
 title = "关于我"
@@ -22,16 +25,10 @@ target = "about"
 href = "/"
 
 [[navigation]]
-title = "论文"
+title = "简历"
 type = "page"
-target = "publications"
-href = "/publications"
-
-[[navigation]]
-title = "教学"
-type = "page"
-target = "teaching"
-href = "/teaching"
+target = "cv"
+href = "/cv"
 
 [[navigation]]
 title = "奖项"
@@ -40,13 +37,7 @@ target = "awards"
 href = "/awards"
 
 [[navigation]]
-title = "服务"
-type = "page"
-target = "services"
-href = "/services"
-
-[[navigation]]
-title = "简历"
-type = "page"
-target = "cv"
-href = "/cv"
+title = "联系"
+type = "link"
+target = "contact"
+href = "#contact"

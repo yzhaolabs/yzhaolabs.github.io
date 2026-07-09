@@ -1,5 +1,5 @@
-I am a PhD student at the School of Science, University of Example, advised by [Prof. Advisor One](https://example.com) and [Dr. Advisor Two](https://example.com).
+I am a quantitative research and machine learning candidate trained in Data Intensive Science at the University of Cambridge and Theoretical Physics at University College London.
 
-Prior to this, I obtained a BSc degree with First Class Honours in Natural Science from the University of Example.
+My work focuses on market-neutral hedging, high-frequency futures and equity data, market microstructure, feature engineering, time-series prediction, backtesting, and model validation.
 
-My current research focuses on investigating the mathematical principles of natural philosophy.
+Recent projects include index-futures basis research for equity market-neutral hedging, L2 futures snapshot factor research, A-share high-frequency deep learning, and limit-order-book prediction ranked in the top 1.2% globally in the WunderFund competition.

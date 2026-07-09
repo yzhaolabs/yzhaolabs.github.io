@@ -1,8 +1,8 @@
 {
   "locale": "en",
   "meta": {
-    "title": "Yuanzhen Zhao — Physicist, Researcher, Builder",
-    "description": "Cross-disciplinary work in physics, statistics, generative modelling, scientific computing, and markets."
+    "title": "Yuanzhen Zhao - Quantitative Research and Machine Learning",
+    "description": "Quantitative research and machine learning profile focused on high-frequency data, market microstructure, time-series prediction, and scientific computing."
   },
   "nav": {
     "questions": "Questions",
@@ -13,50 +13,50 @@
     "language": "中文"
   },
   "hero": {
-    "kicker": "Physicist · Researcher · Builder",
-    "heading": "I build models to see what data hides.",
-    "supporting": "Across physics, statistics, generative AI and markets, I use computation to make difficult structures visible.",
+    "kicker": "Quantitative Research · Machine Learning · Scientific Computing",
+    "heading": "I build models for noisy markets and complex systems.",
+    "supporting": "Trained in data-intensive science and theoretical physics, I work on high-frequency data, market microstructure, feature engineering, and time-series prediction.",
     "methodLabel": "A recurring habit",
-    "method": "Across different domains, the method stays surprisingly consistent: define what is hidden, decide what the data can support, and build the smallest model that makes the structure visible."
+    "method": "Across market data, physics, and scientific computing, the method stays consistent: define the hidden structure, test what the data can support, and build models that survive validation."
   },
   "questions": [
     {
-      "id": "reconstruct",
-      "title": "How do we reconstruct what cannot be directly seen?",
-      "description": "Recovering anatomy and signals from sparse, noisy, or indirect measurements."
+      "id": "dynamics",
+      "title": "How do market dynamics change across horizons?",
+      "description": "Studying intraday, daily, and cross-contract behavior in futures and equity data."
     },
     {
       "id": "infer",
-      "title": "How certain can we be about a hidden mechanism?",
-      "description": "Separating plausible explanations with statistical inference and model comparison."
-    },
-    {
-      "id": "dynamics",
-      "title": "How can models learn the dynamics of a system?",
-      "description": "Building compact representations that forecast how coupled systems evolve."
+      "title": "Which signals remain stable out of sample?",
+      "description": "Using factor research, purged validation, ablation, and robustness checks to separate signal from noise."
     },
     {
       "id": "invariants",
-      "title": "What remains invariant when a problem changes domains?",
-      "description": "Tracing shared mathematical structure across physics, computation, and markets."
+      "title": "What structure transfers across domains?",
+      "description": "Tracing shared modelling patterns across physics, computation, and financial markets."
+    },
+    {
+      "id": "reconstruct",
+      "title": "How can sparse observations recover hidden state?",
+      "description": "Recovering latent structure from limited, noisy, or indirect measurements."
     }
   ],
   "sections": {
     "questions": {
-      "label": "Problem atlas",
-      "heading": "Four questions, many domains"
+      "label": "Research map",
+      "heading": "Questions behind the work"
     },
     "work": {
-      "label": "Selected explorations",
+      "label": "Selected work",
       "heading": "Models tested against real evidence"
     },
     "archive": {
       "label": "Archive",
-      "heading": "Further experiments and tools"
+      "heading": "Further projects and tools"
     },
     "path": {
       "label": "Path",
-      "heading": "From physical principles to applied systems"
+      "heading": "From physical principles to quantitative systems"
     },
     "contact": {
       "label": "Contact",
@@ -64,6 +64,13 @@
     }
   },
   "projects": {
+    "ashare-hf-framework": {
+      "title": "A-share high-frequency deep learning framework",
+      "archiveSummary": "Multi-scale sequence modelling for A-share high-frequency prediction with Mamba-3, GRU, and Transformer attention.",
+      "question": "Can high-frequency A-share prediction combine microstructure features and multi-scale sequence models across heterogeneous horizons?",
+      "approach": "Built Mamba-3 state-space, causal GRU, and Transformer cross-attention architectures with single-GPU and multi-GPU training, inference, logging, and model comparison.",
+      "finding": "Created an extensible research base for testing market microstructure hypotheses beyond single-window features, with a path toward sequence, graph, and fundamental signals."
+    },
     "mri-super-resolution": {
       "title": "Recovering anatomy from sparse MRI slices",
       "archiveSummary": "Unpaired 3D super-resolution using a latent diffusion prior to recover fine anatomy from anisotropic MRI.",
@@ -83,11 +90,11 @@
       "alt": "Posterior distribution for the Antikythera calendar-ring hole count with reference lines at 354 and 365."
     },
     "lora-dynamics": {
-      "title": "Teaching a language model predator-prey dynamics",
-      "archiveSummary": "LoRA fine-tuning of a compact language model for held-out nonlinear Lotka-Volterra forecasting.",
-      "question": "Can a compact language model learn nonlinear multivariate dynamics under a strict compute budget?",
-      "approach": "Apply numerical-to-text preprocessing and LoRA fine-tuning to Qwen2.5-0.5B-Instruct.",
-      "finding": "Fine-tuning reduced amplitude instability and produced more stable held-out forecasts than the untrained baseline.",
+      "title": "LoRA fine-tuning for time-series forecasting",
+      "archiveSummary": "LoRA adaptation of Qwen2.5-0.5B-Instruct for nonlinear multivariate forecasting under tight compute.",
+      "question": "Can parameter-efficient fine-tuning adapt a compact instruction model to nonlinear multivariate time-series forecasting?",
+      "approach": "Fine-tuned Qwen2.5-0.5B-Instruct with LoRA and converted numeric sequences into token inputs through an LLMTIME-style pipeline.",
+      "finding": "Forecasting error fell by roughly 20% versus the native model, supporting PEFT-adapted LLMs for nonlinear dynamics modelling.",
       "caption": "Forecasts on held-out predator-prey trajectories compare the baseline with the LoRA-adapted model.",
       "alt": "Line plots comparing baseline and LoRA-adapted forecasts for held-out Lotka-Volterra trajectories."
     },
@@ -109,49 +116,57 @@
     },
     "quantum-optics": {
       "title": "Quantum Insights into Optical Phenomena",
-      "archiveSummary": "Numerical links between paraxial wave optics and the Schrödinger equation."
+      "archiveSummary": "Numerical links between paraxial wave optics and the Schrodinger equation."
     },
     "lob-forecasting": {
-      "title": "Limit Order Book Forecasting",
-      "archiveSummary": "Multi-horizon order-flow prediction designed around stable CPU inference."
+      "title": "WunderFund limit order book prediction",
+      "archiveSummary": "Multi-horizon order-book modelling with ONNX inference; ranked #56 of 4,966 globally.",
+      "question": "Can anonymised limit-order-book sequences predict future weighted volume linked to price movement?",
+      "approach": "Compressed multi-level price-volume features with encoders and PCA, then ensembled LightGBM and LSTM models with ONNX CPU inference.",
+      "finding": "The model reached an out-of-sample weighted IC mean near 0.19 and ranked #56 / 4,966 globally, top 1.2%."
     },
     "futures-basis": {
-      "title": "Index Futures Basis Dynamics",
-      "archiveSummary": "Transaction-cost-aware hedge allocation and roll analysis for changing futures basis conditions."
+      "title": "Index futures basis dynamics",
+      "archiveSummary": "Basis-factor research for market-neutral hedging; improved hedge-leg annual return by about 8 pp.",
+      "question": "How should an equity market-neutral strategy select short index-futures contracts as basis seasonality and convergence change?",
+      "approach": "Built cross-contract basis factors, term-structure features, open-interest interactions, and microstructure variables for layered backtests.",
+      "finding": "A Ridge model under fixed short exposure improved hedge-leg annualised return by roughly 8 percentage points versus a distant quarterly roll baseline."
     }
   },
   "path": [
     {
-      "period": "2025–present",
-      "title": "Applied quantitative research",
-      "subtitle": "Market microstructure and systematic research",
-      "summary": "Studies order flow, factors, and futures basis dynamics under practical execution constraints."
+      "period": "2026-present",
+      "title": "Quantitative Research Intern",
+      "subtitle": "Qilin Investment, Shanghai",
+      "summary": "Researches index-futures hedge modules for equity market-neutral strategies, with emphasis on basis seasonality, convergence, and short-contract selection."
     },
     {
-      "period": "2025",
-      "title": "Research across models and measurement",
-      "subtitle": "Imaging, statistics, and generative modelling",
-      "summary": "Used computation to reconstruct hidden anatomy, test geometric hypotheses, and learn nonlinear dynamics."
+      "period": "2025-2026",
+      "title": "Quantitative Research Intern",
+      "subtitle": "Hongmao Investment, Shanghai",
+      "summary": "Processed L2 futures snapshots, stitched dominant contracts, built minute-frequency price-volume factors, and validated LightGBM pipelines with purged cross-validation."
     },
     {
-      "period": "2024–2025",
+      "period": "2024-2026",
       "title": "MPhil Data Intensive Science",
       "subtitle": "University of Cambridge",
-      "summary": "Worked across medical imaging, statistical inference, scientific computing, and machine learning."
+      "summary": "Trained in machine learning, deep learning, advanced statistics, and research computing; GPA 3.75/4.0, top 15%."
     },
     {
-      "period": "2021–2024",
+      "period": "2021-2024",
       "title": "BSc Theoretical Physics",
       "subtitle": "University College London",
-      "summary": "Built a foundation in mathematical physics, numerical methods, optics, and statistical reasoning."
+      "summary": "Built a foundation in computational physics, modelling, advanced linear algebra, and particle physics; GPA 3.96/4.0, top 2%."
     }
   ],
   "contact": {
-    "heading": "Interested in models that connect evidence to structure?",
-    "body": "I am open to conversations about research, scientific computing, generative modelling, and quantitative systems.",
-    "email": "mailto:yuanzhenzhao622@gmail.com",
+    "heading": "Interested in quantitative research, high-frequency data, or time-series models?",
+    "body": "I am open to conversations about market microstructure, feature engineering, model validation, scientific computing, and machine learning systems.",
+    "email": "mailto:j.zhao02@outlook.com",
     "github": "https://github.com/yzhaolabs",
     "linkedin": "https://www.linkedin.com/in/zhaoyuanzhen"
   },
   "footer": "Yuanzhen Zhao"
 }
+
+
