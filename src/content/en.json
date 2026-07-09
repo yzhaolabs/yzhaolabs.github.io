@@ -137,25 +137,25 @@
     {
       "period": "2026-present",
       "title": "Quantitative Research Intern",
-      "subtitle": "Qilin Investment, Shanghai",
+      "subtitle": "Qilin Investment, Shanghai, China",
       "summary": "Researches index-futures hedge modules for equity market-neutral strategies, with emphasis on basis seasonality, convergence, and short-contract selection."
     },
     {
       "period": "2025-2026",
       "title": "Quantitative Research Intern",
-      "subtitle": "Hongmao Investment, Shanghai",
+      "subtitle": "Hongmao Investment, Shanghai, China",
       "summary": "Processed L2 futures snapshots, stitched dominant contracts, built minute-frequency price-volume factors, and validated LightGBM pipelines with purged cross-validation."
     },
     {
       "period": "2024-2026",
       "title": "MPhil Data Intensive Science",
-      "subtitle": "University of Cambridge",
+      "subtitle": "University of Cambridge, Cambridge, UK",
       "summary": "Trained in machine learning, deep learning, advanced statistics, and research computing; GPA 3.75/4.0, top 15%."
     },
     {
       "period": "2021-2024",
       "title": "BSc Theoretical Physics",
-      "subtitle": "University College London",
+      "subtitle": "University College London, London, UK",
       "summary": "Built a foundation in computational physics, modelling, advanced linear algebra, and particle physics; GPA 3.96/4.0, top 2%."
     }
   ],
@@ -168,5 +168,6 @@
   },
   "footer": "Yuanzhen Zhao"
 }
+
 
 
